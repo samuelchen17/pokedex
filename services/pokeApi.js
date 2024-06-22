@@ -11,35 +11,30 @@ let pokemons = [];
 let allPokemons = [];
 // modify to allow for different regions
 const getPokemon = async () => {
-  fetch(POKE_BASE_URL)
-    .then((res) => res.json())
-    .then((data) => {
-      const pokemonUrls = data.results.map((pokemon) => pokemon.url);
+  try {
+    const res = await fetch(POKE_BASE_URL);
+    const data = await res.json();
+    const pokemonUrls = data.results.map((pokemon) => pokemon.url);
 
-      pokemonUrls.forEach((url) => {
-        // go to each url and grab relavant info
-        pokemons.map(getPokemonInfo(url));
-        console.log(pokemons);
-      });
-      //   const allPokemons = getPokemonInfo(data.results);
-    });
+    pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));
+    // console.log(pokemons[4].name);
+    return pokemons;
+  } catch {
+    console.log("error getting pokemon list");
+  }
 };
 
 // for each pokemon, grab the url, go to url and extract relavant information
 // should return objects or a list of objects
-const getPokemonInfo = (url) => {
+const getPokemonInfo = async (url) => {
   try {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        let pokeInfo = {
-          name: data.name,
-          id: data.id,
-          type: data.types,
-        };
-        // console.log(pokeInfo);
-        return { pokeInfo };
-      });
+    const res = await fetch(url);
+    const data = await res.json();
+    return {
+      name: data.name,
+      id: data.id,
+      type: data.types,
+    };
   } catch {
     console.log("error getting pokemon data");
   }

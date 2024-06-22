@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { getPokemon } from "../../services/pokeApi";
 
 function PokeCard() {
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    const fetchPokemon = async () => {
+      try {
+        const pokemonData = await getPokemon();
+        setPokemons(pokemonData);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchPokemon();
+  }, []);
+
+  console.log(pokemons[1]);
   return (
     <div className="cursor-pointer w-[px] h-[px] block relative bg-red-500 my-1 mx-2 py-2 px-5">
       <div></div>
@@ -22,3 +40,5 @@ function PokeCard() {
 }
 
 export default PokeCard;
+
+// set the use effect in pokedex instead, and pass the children in while for each

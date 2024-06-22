@@ -4,6 +4,8 @@ function PokeCard({ pokemon }) {
   // add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");
 
+  console.log(pokemon.type[0].type.name);
+
   return (
     <div className="cursor-pointer w-[px] h-[px] block relative bg-red-500 my-1 mx-2 py-2 px-5">
       <div></div>
@@ -18,8 +20,10 @@ function PokeCard({ pokemon }) {
           <span className="text-xl">{pokemon.name}</span>
         </div>
         <div className="flex justify-between">
-          <span>Grass</span>
-          <span>Flying</span>
+          <span>{pokemon.type[0].type.name}</span>
+          {pokemon.type[1]?.type?.name && (
+            <span>{pokemon.type[1].type.name}</span>
+          )}
         </div>
       </div>
     </div>

@@ -7,12 +7,15 @@ function PokeCard({ pokemon }) {
   // @media query for a max-width for pokedex
 
   return (
-    <div className="hover:animate-bounceOnce cursor-pointer bg-red-200 my-1 mx-1 py-2 px-5">
-      <div className="min-w-[120px] max-w-[150px] h-[200px] bg-slate-100 rounded">
+    <div className="hover:animate-bounceOnce cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5 flex-grow">
+      <div className=" bg-slate-100 rounded">
         <div className="pl-2 pt-1">#{paddedId}</div>
-        <img
-          src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
-        />
+        <div className="flex justify-center">
+          <img
+            className="w-full h-full object-cover"
+            src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
+          />
+        </div>
       </div>
       <div>
         <div className="py-1 text-xl capitalize outline-dashed outline-red-500">

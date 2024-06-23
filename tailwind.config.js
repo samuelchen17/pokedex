@@ -26,7 +26,7 @@ export default {
   theme: {
     extend: {
       animation: {
-        bounceOnce: "bounceOnce 0.4s ease-in-out",
+        bounceOnce: "bounceOnce 0.3s",
       },
 
       keyframes: {

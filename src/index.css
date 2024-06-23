@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .grass {
+    @apply bg-grass text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+  }
+  .fire {
+    @apply bg-fire text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+  }
+  .water {
+    @apply bg-water text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+  }
+}

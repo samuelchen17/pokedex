@@ -1,4 +1,4 @@
-import plugin from "tailwindcss";
+// import plugin from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,21 +8,22 @@ export default {
       colors: {
         grass: "#9bcc50",
         fire: "#fd7d24",
+        water: "#4592c4",
         customBlue: "#53a4cf",
         customRed: "#f16e57",
       },
     },
   },
   plugins: [
-    plugin(function ({ addUtilities }) {
-      const newUtilities = {
-        ".grass": {
-          backgroundColor: "#9bcc50",
-          color: "#000000",
-          borderRadius: "0.375rem",
-        },
-      };
-      addUtilities(newUtilities, ["responsive", "hover"]);
-    }),
+    // plugin(function ({ addUtilities }) {
+    //   const newUtilities = {
+    //     ".grass": {
+    //       backgroundColor: "#9bcc50",
+    //       color: "#000000",
+    //       borderRadius: "0.375rem",
+    //     },
+    //   };
+    //   addUtilities(newUtilities, ["responsive", "hover"]);
+    // }),
   ],
 };

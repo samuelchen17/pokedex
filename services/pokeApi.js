@@ -1,5 +1,5 @@
 const MAX_POKEMON = 1302;
-const KANTO = 20;
+const KANTO = 9;
 
 const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${KANTO}&offset=0`;
 const POKE_IMG_SM = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png`;

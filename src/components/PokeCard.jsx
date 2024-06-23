@@ -6,10 +6,10 @@ function PokeCard({ pokemon }) {
 
   const type = pokemon.type[0].type.name;
 
-  console.log(pokemon.type[0].type.name);
+  //   console.log(pokemon.type[0].type.name);
 
   return (
-    <div className="cursor-pointer w-[px] h-[px] block relative bg-red-500 my-1 mx-1 py-2 px-5">
+    <div className="cursor-pointer w-[px] h-[px] block relative bg-red-200 my-1 mx-1 py-2 px-5">
       <div></div>
       <div className="w-[130px] h-[160px] bg-slate-100 rounded">
         <span className="pl-2">#{paddedId}</span>
@@ -23,9 +23,9 @@ function PokeCard({ pokemon }) {
         </div>
         <div className="flex justify-between capitalize">
           {/* [perhaps make this map] */}
-          <span className={`grass`}>{type}</span>
+          <span className={`${type}`}>{type}</span>
           {pokemon.type[1]?.type?.name && (
-            <span className="bg-blue-500">{pokemon.type[1].type.name}</span>
+            <span className="dragon">{pokemon.type[1].type.name}</span>
           )}
         </div>
       </div>

@@ -3,19 +3,58 @@
 @tailwind utilities;
 
 @layer components {
-  .grass {
-    @apply bg-grass text-black;
+  .bug {
+    @apply bg-bug text-white;
+  }
+  .dark {
+    @apply bg-dark text-white;
+  }
+  .dragon {
+    @apply bg-[linear-gradient(to_bottom,#53a4cf_0%,#53a4cf_50%,#f16e57_50%,#f16e57_100%)] text-white;
+  }
+  .electric {
+    @apply bg-electric text-black;
+  }
+  .fairy {
+    @apply bg-fairy text-black;
+  }
+  .fighting {
+    @apply bg-fighting text-white;
   }
   .fire {
     @apply bg-fire text-white;
   }
-  .water {
-    @apply bg-water text-white;
-  }
   .flying {
-    @apply bg-flyingTop text-white;
+    @apply bg-[linear-gradient(to_bottom,#3dc7ef_0%,#3dc7ef_50%,#bdb9b8_50%,#bdb9b8_100%)] text-black;
+  }
+  .ghost {
+    @apply bg-ghost text-white;
+  }
+  .grass {
+    @apply bg-grass text-black;
+  }
+  .ground {
+    @apply bg-[linear-gradient(to_bottom,#f7de3f_0%,#f7de3f_50%,#ab9842_50%,#ab9842_100%)] text-black;
+  }
+  .ice {
+    @apply bg-ice text-black;
+  }
+  .normal {
+    @apply bg-normal text-black;
   }
   .poison {
     @apply bg-poison text-white;
+  }
+  .psychic {
+    @apply bg-psychic text-white;
+  }
+  .rock {
+    @apply bg-rock text-white;
+  }
+  .steel {
+    @apply bg-steel text-black;
+  }
+  .water {
+    @apply bg-water text-white;
   }
 }

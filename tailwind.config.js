@@ -25,6 +25,17 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        bounceOnce: "bounceOnce 0.4s ease-in-out",
+      },
+
+      keyframes: {
+        bounceOnce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-3%)" },
+        },
+      },
+
       colors: {
         grass: "#9bcc50",
         fire: "#fd7d24",

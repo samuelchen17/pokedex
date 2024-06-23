@@ -1,5 +1,5 @@
 const MAX_POKEMON = 1302;
-const KANTO = 10;
+const KANTO = 20;
 
 const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${KANTO}&offset=0`;
 const POKE_IMG_SM = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png`;
@@ -8,7 +8,6 @@ const POKE_IMG_LG = `https://www.pokemon.com/static-assets/content-assets/cms2/i
 // list of objects containing name, number, type
 let pokemons = [];
 
-let allPokemons = [];
 // modify to allow for different regions
 const getPokemon = async () => {
   try {
@@ -40,8 +39,6 @@ const getPokemonInfo = async (url) => {
   }
 };
 
-const displayPokemon = () => {};
-
 // // wait for this function to complete before proceeding
 // const awaitPokemonData = async () => {
 //     try {
@@ -52,7 +49,7 @@ const displayPokemon = () => {};
 export { getPokemon };
 
 // get all the type colours from pokemon
-// const typeColours = {}
+const typeColours = {};
 
 // url for all pokemon
 // https://pokeapi.co/api/v2/pokemon?limit=151&offset=0

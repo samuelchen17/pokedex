@@ -21,8 +21,8 @@ function Pokedex() {
 
   console.log(pokemons[1]);
   return (
-    <div className="bg-green-500 h-[500px] py-2">
-      <div className="flex flex-wrap justify-center">
+    <div className="bg-green-500 py-2 px-2">
+      <div className="flex flex-wrap justify-center bg-blue-600 w-auto">
         {pokemons.map((pokemon) => (
           <PokeCard key={pokemon.id} pokemon={pokemon} />
         ))}

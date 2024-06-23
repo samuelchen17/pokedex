@@ -4,8 +4,10 @@ function PokeCard({ pokemon }) {
   // add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");
 
+  // the reason why the css is not loading is probably because the card is being rendered
+  // before the data is coming in from the api
   const type = pokemon.type[0].type.name;
-
+  console.log(type);
   //   console.log(pokemon.type[0].type.name);
 
   // make the card a % width and also set a max or min width
@@ -31,7 +33,9 @@ function PokeCard({ pokemon }) {
             {type}
           </span>
           {pokemon.type[1]?.type?.name && (
-            <span className="water font-semibold rounded-md shadow-md w-[38%]">
+            <span
+              className={`${pokemon.type[1].type.name} font-semibold rounded-md shadow-md w-[38%]`}
+            >
               {pokemon.type[1].type.name}
             </span>
           )}

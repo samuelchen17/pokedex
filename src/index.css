@@ -12,4 +12,10 @@
   .water {
     @apply bg-water text-white;
   }
+  .flying {
+    @apply bg-flyingTop text-white;
+  }
+  .poison {
+    @apply bg-poison text-white;
+  }
 }

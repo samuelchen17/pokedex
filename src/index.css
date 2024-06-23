@@ -4,12 +4,12 @@
 
 @layer components {
   .grass {
-    @apply bg-grass text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+    @apply bg-grass text-black;
   }
   .fire {
-    @apply bg-fire text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+    @apply bg-fire text-white;
   }
   .water {
-    @apply bg-water text-white font-semibold rounded-full shadow-md hover:bg-violet-700;
+    @apply bg-water text-white;
   }
 }

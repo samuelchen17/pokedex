@@ -40,6 +40,21 @@ const getPokemonInfo = async (url) => {
   }
 };
 
+// for getting stats etc. of pokemon
+const getPokemonDetail = async (url) => {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    return {
+      name: data.name,
+      id: data.id,
+      type: data.types,
+    };
+  } catch {
+    console.log("error getting pokemon data");
+  }
+};
+
 // // wait for this function to complete before proceeding
 // const awaitPokemonData = async () => {
 //     try {

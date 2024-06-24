@@ -5,16 +5,14 @@ function PokeCard({ pokemon }) {
   // add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");
   const [showModal, setShowModal] = useState(false);
-  // make the card a % width and also set a max or min width
-  // @media query for a max-width for pokedex
 
   return (
     <div
       // hover:animate-bounceOnce
-      className=" cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5"
+      className="hover:animate-bounceOnce cursor-pointer bg-slate-300 rounded-xl py-2 px-2 my-2 mx-2"
       onClick={() => setShowModal(true)}
     >
-      <div className=" bg-slate-100 rounded">
+      <div className=" bg-slate-200 rounded-xl">
         <div className="pl-2 pt-1">#{paddedId}</div>
         <div className="flex justify-center">
           <img
@@ -24,9 +22,7 @@ function PokeCard({ pokemon }) {
         </div>
       </div>
       <div>
-        <div className="py-1 text-xl capitalize outline-dashed outline-red-500">
-          {pokemon.name}
-        </div>
+        <div className="py-1 text-xl capitalize">{pokemon.name}</div>
         <div className="flex justify-between capitalize">
           {pokemon.type.map((type, index) => (
             <span

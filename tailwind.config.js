@@ -25,6 +25,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        sms: "400px",
+      },
+
       animation: {
         bounceOnce: "bounceOnce 0.3s",
       },

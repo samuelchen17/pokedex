@@ -11,7 +11,7 @@ function PokeCard({ pokemon }) {
   return (
     <div
       // hover:animate-bounceOnce
-      className=" cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5 flex-grow"
+      className=" cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5"
       onClick={() => setShowModal(true)}
     >
       <div className=" bg-slate-100 rounded">

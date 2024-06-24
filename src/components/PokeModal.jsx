@@ -4,12 +4,12 @@ function PokeModal({ pokemon, onClose, paddedId }) {
   return (
     // background div
     <div
-      onClick={onClose}
       className="fixed bg-black bg-opacity-60 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
+      onClick={onClose}
     >
       <div
         onClick={(event) => event.stopPropagation()}
-        className="bg-red-200 max-w-[600px] outline-dashed outline-green-500"
+        className="bg-red-200 max-w-[600px] mx-6 outline-dashed outline-green-500"
       >
         <div onClick={onClose}>cross</div>
         <div className="flex flex-row justify-between">

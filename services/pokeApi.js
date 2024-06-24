@@ -49,11 +49,9 @@ const getPokemonDetail = async (id) => {
       id: data.id,
       type: data.types,
     };
-    console.log(pokemonDetails);
     return pokemonDetails;
   } catch (err) {
     console.log("error getting pokemon details", err);
-    return null;
   }
 };
 

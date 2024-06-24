@@ -11,6 +11,7 @@ function PokeModal({ pokemonId, onClose, paddedId }) {
     const fetchPokeDetail = async () => {
       try {
         const pokeDet = await getPokemonDetail(pokemonId);
+        console.log(pokeDet);
         setPokemonDetail(pokeDet);
         setLoading(false);
       } catch (err) {
@@ -20,14 +21,19 @@ function PokeModal({ pokemonId, onClose, paddedId }) {
     };
 
     fetchPokeDetail();
-    console.log(fetchPokeDetail);
   }, []);
 
+  console.log(pokemonDetail.name);
   return (
     <div
       className="fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
       onClick={(event) => event.stopPropagation()}
     >
+      {/* {loading ? (
+        <div>Loading ...</div>
+      ) : (
+        {console.log(pokemonDetail.type)} />
+      )} */}
       <div
         className="bg-slate-200 max-w-[600px] mx-6 outline-dashed outline-green-500"
         onClick={(event) => event.stopPropagation()}
@@ -37,11 +43,12 @@ function PokeModal({ pokemonId, onClose, paddedId }) {
           <div>Prev</div>
           <div>Next</div>
         </div>
-        <div className="text-center">firefly #0001</div>
+        <div className="text-center">{pokemonDetail.name} #0001</div>
         <div className="flex justify-center">
           <div className="flex flex-row justify-center gap-8 w-[50%]">
-            <TypePill type={"fire"} />
-            <TypePill type={"flying"} />
+            {/* {pokemonDetail.type.map((type, index) => (
+              <TypePill key={index} type={type.type.name} />
+            ))} */}
           </div>
         </div>
         <div className="flex justify-center">
@@ -67,7 +74,7 @@ function PokeModal({ pokemonId, onClose, paddedId }) {
         <div>About</div>
         <div>
           fajkl fjlekwa jflkseajlf jewlaj fleaw jflawj fiowj lfiwjalijfdsfsdf sd
-          sdfs dfsd fsd{" "}
+          sdfs dfsd fsd
         </div>
         <div>
           {/* use .map to generate the stats */}
@@ -100,3 +107,8 @@ function PokeModal({ pokemonId, onClose, paddedId }) {
 }
 
 export default PokeModal;
+
+// make it so stats is a .map
+// set correct loading
+// figure out why there is two undefined when clicked? maybe because the console.log
+// is being executed before data is here

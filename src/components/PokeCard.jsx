@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import PokeModal from "./PokeModal";
 
 function PokeCard({ pokemon }) {
   // add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");
+  const [showModal, setShowModal] = useState(false);
   // make the card a % width and also set a max or min width
   // @media query for a max-width for pokedex
 
   return (
-    <div className="hover:animate-bounceOnce cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5 flex-grow">
+    <div
+      // hover:animate-bounceOnce
+      className=" cursor-pointer bg-red-200 my-2 mx-1 py-2 px-5 flex-grow"
+      onClick={() => setShowModal(true)}
+    >
       <div className=" bg-slate-100 rounded">
         <div className="pl-2 pt-1">#{paddedId}</div>
         <div className="flex justify-center">
@@ -32,6 +38,13 @@ function PokeCard({ pokemon }) {
           ))}
         </div>
       </div>
+      {showModal && (
+        <PokeModal
+          pokemon={pokemon}
+          paddedId={paddedId}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }

@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import TypePill from "./TypePill";
+import { getPokemonDetail } from "../../services/pokeApi";
 
-function PokeModal({ pokemon, onClose, paddedId }) {
+function PokeModal({ pokemonId, onClose, paddedId }) {
+  const [pokemonDetail, setPokemonDetail] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const fetchPokeDetail = async () => {
+      try {
+        const pokeDet = await getPokemonDetail(pokemonId);
+        setPokemonDetail(pokeDet);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+
+    fetchPokeDetail();
+    console.log(fetchPokeDetail);
+  }, []);
+
   return (
-    // background div
     <div
       className="fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
       onClick={(event) => event.stopPropagation()}
@@ -16,10 +37,12 @@ function PokeModal({ pokemon, onClose, paddedId }) {
           <div>Prev</div>
           <div>Next</div>
         </div>
-        <div className="text-center">Name #0001</div>
-        <div className="flex flex-row justify-center gap-8">
-          <div>Fire</div>
-          <div>flying</div>
+        <div className="text-center">firefly #0001</div>
+        <div className="flex justify-center">
+          <div className="flex flex-row justify-center gap-8 w-[50%]">
+            <TypePill type={"fire"} />
+            <TypePill type={"flying"} />
+          </div>
         </div>
         <div className="flex justify-center">
           <img

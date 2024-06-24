@@ -34,9 +34,11 @@ function Pokedex() {
   return (
     <div className="bg-red-500 py-2 px-2 flex justify-center items-center">
       <div className="flex justify-center items-center flex-col">
-        <div className="flex sms:flex-row sms:justify-between w-full lg:w-[80%] mb-4 mt-2 flex-col items-center text-center">
+        <div className="flex sm:flex-row sm:justify-between w-full lg:w-[80%] mb-4 mt-2 flex-col items-center text-center">
           {/* sms:justify-between sms:items-center sms:flex-row flex-col */}
-          <div className="text-white text-xl font-medium ">Showing 1-50</div>
+          <div className="text-white text-xl font-medium mb-1 sm:mb-0">
+            Showing 1-50
+          </div>
           <div>
             <label className="text-white mr-2 text-xl font-medium">
               Sort By:
@@ -44,7 +46,7 @@ function Pokedex() {
             <select
               value={sort}
               onChange={handleSort}
-              className="px-2 py-1 rounded"
+              className="px-2 py-1 mt-2 sm:mt-0 rounded"
             >
               <option value="lowNumFirst">Lowest Number (First)</option>
               <option value="highNumFirst">Highest Number (First)</option>

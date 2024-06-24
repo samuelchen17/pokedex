@@ -26,7 +26,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        sms: "414px",
+        sms: "425px",
       },
 
       animation: {

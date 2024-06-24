@@ -6,11 +6,9 @@ const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${KANTO}&offset=0
 const POKE_IMG_SM = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png`;
 const POKE_IMG_LG = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png`;
 
-// list of objects containing name, number, type
-let pokemons = [];
-
 // modify to allow for different regions
 const getPokemon = async () => {
+  let pokemons = [];
   try {
     const res = await fetch(POKE_BASE_URL);
     const data = await res.json();
@@ -19,8 +17,8 @@ const getPokemon = async () => {
     pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));
     // console.log(pokemons[4].name);
     return pokemons;
-  } catch {
-    console.log("error getting pokemon list");
+  } catch (err) {
+    console.log("error getting pokemon list", err);
   }
 };
 
@@ -35,37 +33,31 @@ const getPokemonInfo = async (url) => {
       id: data.id,
       type: data.types,
     };
-  } catch {
-    console.log("error getting pokemon data");
+  } catch (err) {
+    console.log("error getting pokemon data", err);
   }
 };
 
 // for getting stats etc. of pokemon
-const getPokemonDetail = async (url) => {
+// grab the pokemon by id from front end
+const getPokemonDetail = async (id) => {
   try {
-    const res = await fetch(url);
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
     const data = await res.json();
-    return {
+    const pokemonDetails = {
       name: data.name,
       id: data.id,
       type: data.types,
     };
-  } catch {
-    console.log("error getting pokemon data");
+    console.log(pokemonDetails);
+    return pokemonDetails;
+  } catch (err) {
+    console.log("error getting pokemon details", err);
+    return null;
   }
 };
 
-// // wait for this function to complete before proceeding
-// const awaitPokemonData = async () => {
-//     try {
-//         const [pokemon, pokemonId] = await
-//     }
-// };
-
-export { getPokemon };
-
-// get all the type colours from pokemon
-const typeColours = {};
+export { getPokemon, getPokemonDetail };
 
 // url for all pokemon
 // https://pokeapi.co/api/v2/pokemon?limit=151&offset=0

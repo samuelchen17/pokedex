@@ -70,3 +70,13 @@ function Pokedex() {
 }
 
 export default Pokedex;
+
+// allow favourites, use their sprite for the favourites
+// sort by favourites only
+
+// filters
+// filter by type
+// filter by region
+// add display of showing 151-252
+// search by number range
+// search by name and number

@@ -31,11 +31,7 @@ function PokeCard({ pokemon }) {
         </div>
       </div>
       {showModal && (
-        <PokeModal
-          pokemonId={pokemon.id}
-          paddedId={paddedId}
-          onClose={() => setShowModal(false)}
-        />
+        <PokeModal pokemonId={pokemon.id} onClose={() => setShowModal(false)} />
       )}
     </div>
   );

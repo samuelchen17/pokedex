@@ -1,7 +1,8 @@
 import { useState } from "react";
-import Pokedex from "./components/Pokedex";
+
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import Pokedex from "./components/pokedex/Pokedex";
 
 function App() {
   const [count, setCount] = useState(0);

@@ -19,6 +19,7 @@ function PokeCard({ pokemon }) {
           <img
             className="w-full h-full object-cover"
             src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
+            alt={`${pokemon.name} png`}
           />
         </div>
       </div>

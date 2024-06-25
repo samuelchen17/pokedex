@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TypePill from "./TypePill";
 import { getPokemonDetail } from "../../services/pokeApi";
+import PokeStats from "./PokeStats";
 
 function PokeModal({ pokemonId, onClose }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
@@ -29,6 +30,7 @@ function PokeModal({ pokemonId, onClose }) {
     setPokeId(pokeId + increment);
     // if less than 0 do nothing
     // if more than display 54 - x do nothing
+    // or make it loop to the biggest and vice versa
   };
 
   return (
@@ -39,73 +41,71 @@ function PokeModal({ pokemonId, onClose }) {
       {loading ? (
         <div className="text-white">Loading ...</div>
       ) : (
-        <div className="px-20 py-20 bg-blue-500">
-          <div
-            className="bg-slate-200 max-w-[600px] mx-6 outline-dashed outline-green-500"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="flex flex-row justify-between text-white">
-              <div
-                className="cursor-pointer outline-dashed w-[50%] bg-slate-600 rounded-xl"
-                onClick={() => handleOnClick(-1)}
-              >
-                Prev
-              </div>
-              <div className="cursor-pointer" onClick={() => handleOnClick(1)}>
-                Next
-              </div>
+        // <div className="px-20 py-20 bg-blue-500">
+        <div
+          className="bg-slate-200 max-w-[600px] mx-6 outline-dashed outline-green-500"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <div className="flex flex-row justify-between text-white">
+            <div
+              className="cursor-pointer outline-dashed w-[50%] bg-slate-600 rounded-xl"
+              onClick={() => handleOnClick(-1)}
+            >
+              Prev
             </div>
-            <div className="flex justify-end" onClick={onClose}>
-              cross
+            <div className="cursor-pointer" onClick={() => handleOnClick(1)}>
+              Next
             </div>
-            <div className="text-center capitalize">
-              {pokemonDetail.name} #{paddedId}
-            </div>
-            <div className="flex justify-center">
-              <div className="flex flex-row justify-center gap-8 w-[50%]">
-                {pokemonDetail.type.map((type, index) => (
-                  <TypePill key={index} type={type.type.name} />
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-center">
-              <img
-                className="max-w-[60%]"
-                src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${paddedId}.png`}
-              />
-            </div>
-            <div className="flex flex-row justify-between">
-              <div className="flex flex-col">
-                <span>height</span>
-                <span>{pokemonDetail.height} m</span>
-              </div>
-              <div className="flex flex-col">
-                <span>Weight</span>
-                <span>{pokemonDetail.weight} kg</span>
-              </div>
-              <div className="flex flex-col">
-                <span>Category</span>
-                <span>Lizard</span>
-              </div>
-            </div>
-            <div>About</div>
-            <div>
-              fajkl fjlekwa jflkseajlf jewlaj fleaw jflawj fiowj
-              lfiwjalijfdsfsdf sd sdfs dfsd fsd
-            </div>
-            <div>
-              <span>stats</span>
-              {pokemonDetail.stats.map((stat, index) => (
-                <div className="flex flex-row" key={index}>
-                  {/* conditional render here base on screen size? */}
-                  <p>{stat.stat.name}</p>
-                  <progress value={stat.base_stat} max="255" />
-                </div>
+          </div>
+          <div className="flex justify-end" onClick={onClose}>
+            cross
+          </div>
+          <div className="text-center capitalize">
+            {pokemonDetail.name} #{paddedId}
+          </div>
+          <div className="flex justify-center">
+            <div className="flex flex-row justify-center gap-8 w-[50%]">
+              {pokemonDetail.type.map((type, index) => (
+                <TypePill key={index} type={type.type.name} />
               ))}
             </div>
-            <div>sound icon</div>
           </div>
+          <div className="flex justify-center">
+            <img
+              className="max-w-[60%]"
+              src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${paddedId}.png`}
+              alt={`${pokemonDetail.name} png`}
+            />
+          </div>
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col">
+              <span>height</span>
+              <span>{pokemonDetail.height} m</span>
+            </div>
+            <div className="flex flex-col">
+              <span>Weight</span>
+              <span>{pokemonDetail.weight} kg</span>
+            </div>
+            <div className="flex flex-col">
+              <span>Category</span>
+              <span>Lizard</span>
+            </div>
+          </div>
+          <div>About</div>
+          <div>
+            fajkl fjlekwa jflkseajlf jewlaj fleaw jflawj fiowj lfiwjalijfdsfsdf
+            sd sdfs dfsd fsd
+          </div>
+          <div className="w-full">
+            {/* move this all into pokestats */}
+            <span>stats</span>
+            {pokemonDetail.stats.map((stat, index) => (
+              <PokeStats stat={stat} key={index} />
+            ))}
+          </div>
+          <div>sound icon</div>
         </div>
+        // </div>
       )}
     </div>
   );
@@ -125,3 +125,5 @@ export default PokeModal;
 // add icons to height and weight
 
 // add box shadows and hover effects
+
+// background colour is a transition of both types

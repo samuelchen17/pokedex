@@ -80,3 +80,4 @@ export default Pokedex;
 // add display of showing 151-252
 // search by number range
 // search by name and number
+// show all 1 - 721

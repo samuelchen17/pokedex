@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TypePill from "./TypePill";
-import { getPokemonDetail } from "../../services/pokeApi";
+import TypePill from "../TypePill";
+import { getPokemonDetail } from "../../../services/pokeApi";
 import PokeStats from "./PokeStats";
 
 function PokeModal({ pokemonId, onClose }) {
@@ -43,7 +43,7 @@ function PokeModal({ pokemonId, onClose }) {
       ) : (
         // <div className="px-20 py-20 bg-blue-500">
         <div
-          className="bg-slate-200 max-w-[600px] mx-6 outline-dashed outline-green-500"
+          className="bg-slate-200 max-w-[600px] sm:mx-6 py-10 sms:px-10 rounded-xl"
           onClick={(event) => event.stopPropagation()}
         >
           <div className="flex flex-row justify-between text-white">
@@ -96,13 +96,7 @@ function PokeModal({ pokemonId, onClose }) {
             fajkl fjlekwa jflkseajlf jewlaj fleaw jflawj fiowj lfiwjalijfdsfsdf
             sd sdfs dfsd fsd
           </div>
-          <div className="w-full">
-            {/* move this all into pokestats */}
-            <span>stats</span>
-            {pokemonDetail.stats.map((stat, index) => (
-              <PokeStats stat={stat} key={index} />
-            ))}
-          </div>
+          <PokeStats stats={pokemonDetail.stats} />
           <div>sound icon</div>
         </div>
         // </div>
@@ -127,3 +121,5 @@ export default PokeModal;
 // add box shadows and hover effects
 
 // background colour is a transition of both types
+
+// add stat total

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PokeModal from "./PokeModal";
+import PokeModal from "./modal/PokeModal";
 import TypePill from "./TypePill";
 
 function PokeCard({ pokemon }) {

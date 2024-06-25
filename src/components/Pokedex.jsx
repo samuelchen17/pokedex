@@ -5,12 +5,11 @@ import { sortPokemons } from "../functions/sort";
 
 function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("lowNumFirst");
   // create a useState for regions
 
   useEffect(() => {
-    setLoading(true);
     const fetchPokemon = async () => {
       try {
         const pokemonData = await getPokemon();

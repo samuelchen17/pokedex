@@ -6,6 +6,7 @@ import PokeNameNumType from "./modal-components/PokeNameNumType";
 import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
+import Pearls from "../design/Pearls";
 
 function PokeModal({ pokemonId, onClose }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
@@ -46,10 +47,16 @@ function PokeModal({ pokemonId, onClose }) {
         <div className="text-white">Loading ...</div>
       ) : (
         <div
-          className={`relative bg-red-500 max-w-[600px] sm:mx-6 sms:px-10 rounded-xl max-h-[95vh] overflow-y-auto outline`}
+          className={`bg-red-500 max-w-[600px] sm:mx-6 sms:px-10 rounded-xl max-h-[95vh] overflow-y-auto outline`}
           onClick={(event) => event.stopPropagation()}
         >
-          <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
+          <div className="flex justify-between">
+            <Pearls />
+            <div className="flex justify-end" onClick={onClose}>
+              cross
+            </div>
+          </div>
+          <PokeModalNavBar handleOnClick={handleOnClick} />
           <PokeNameNumType pokemonDetail={pokemonDetail} paddedId={paddedId} />
           <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
           <PokeBio pokemonDetail={pokemonDetail} />

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getPokemonDetail } from "../../../services/pokeApi";
 import PokeStats from "./modal-components/PokeStats";
-import NextPrev from "./modal-components/NextPrev";
+
 import PokeNameNumType from "./modal-components/PokeNameNumType";
 import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
+import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 
 function PokeModal({ pokemonId, onClose }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
@@ -38,34 +39,30 @@ function PokeModal({ pokemonId, onClose }) {
 
   return (
     <div
-      className="fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
+      className="overscroll-contain fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
       onClick={(event) => event.stopPropagation()}
     >
       {loading ? (
         <div className="text-white">Loading ...</div>
       ) : (
         <div
-          className={`bg-red-500 max-w-[600px] sm:mx-6 sms:px-10 rounded-xl max-h-[95vh] overflow-y-auto outline`}
+          className={`relative bg-red-500 max-w-[600px] sm:mx-6 sms:px-10 rounded-xl max-h-[95vh] overflow-y-auto outline`}
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="flex justify-end my-2" onClick={onClose}>
-            cross
-          </div>
-
-          <NextPrev handleOnClick={handleOnClick} />
+          <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
           <PokeNameNumType pokemonDetail={pokemonDetail} paddedId={paddedId} />
-
           <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
           <PokeBio pokemonDetail={pokemonDetail} />
+
           <div>About</div>
           <div>
             fajkl fjlekwa jflkseajlf jewlaj fleaw jflawj fiowj lfiwjalijfdsfsdf
             sd sdfs dfsd fsd
           </div>
+
           <PokeStats stats={pokemonDetail.stats} />
           <div>sound icon</div>
         </div>
-        // </div>
       )}
     </div>
   );

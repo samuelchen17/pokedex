@@ -10,7 +10,7 @@ function PokeCard({ pokemon }) {
 
   return (
     <div
-      className="hover:animate-bounceOnce cursor-pointer bg-slate-300 rounded-xl py-2 px-2 my-2 mx-2"
+      className="hover:animate-bounceOnce cursor-pointer bg-slate-300 outline rounded-xl py-2 px-2 my-2 mx-2"
       onClick={() => setShowModal(true)}
     >
       <div className=" bg-slate-200 rounded-xl">

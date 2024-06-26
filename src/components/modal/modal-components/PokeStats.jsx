@@ -10,11 +10,13 @@ const statNameShort = {
 };
 
 function PokeStats({ stats }) {
+  let statTotal = 0;
   return (
     <div className="w-full">
       <span>stats</span>
       {stats.map((stat, index) => {
         const statValue = (stat.base_stat / 255) * 100;
+        statTotal += stat.base_stat;
         return (
           <div key={index} className="flex flex-row items-center">
             {/* conditional render here base on screen size? */}
@@ -29,6 +31,7 @@ function PokeStats({ stats }) {
           </div>
         );
       })}
+      <div className="w-[15%]">Stat Total: {statTotal}</div>
     </div>
   );
 }

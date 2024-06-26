@@ -37,7 +37,7 @@ function Pokedex() {
 
           <PokeSort setSort={setSort} sort={sort} />
         </div>
-        <div className="grid lg:max-w-[80%] bg-white rounded-xl grid-cols-1 sms:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center py-4 px-4">
+        <div className="grid lg:max-w-[80%] outline bg-white rounded-xl grid-cols-1 sms:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center py-4 px-4">
           {loading ? (
             // add a spinning circle?
             <div>Loading...</div>

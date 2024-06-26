@@ -22,6 +22,13 @@ export default {
     "dark",
     "steel",
     "fairy",
+    "bg-red-400",
+    "bg-red-700",
+    "bg-yellow-400",
+    "bg-yellow-700",
+    "bg-green-400",
+    "bg-green-700",
+    "bg-white",
   ],
   theme: {
     extend: {

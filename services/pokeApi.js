@@ -11,6 +11,8 @@ const test = [0, 20];
 const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${test[1]}&offset=${test[0]}`;
 const POKE_IMG_SM = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png`;
 const POKE_IMG_LG = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png`;
+const EVO = "https://pokeapi.co/api/v2/evolution-chain/2/";
+const SPES = "https://pokeapi.co/api/v2/pokemon-species/5";
 
 // modify to allow for different regions
 const getPokemon = async () => {
@@ -50,26 +52,50 @@ const getPokemonInfo = async (url) => {
 // grab the pokemon by id from front end
 const getPokemonDetail = async (id) => {
   try {
-    // const [pokeDetails, pokeSpecies] = await Promise.all([]);
+    const pokeAbout = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${id}/`
+    ).then((res) => res.json());
+    const pokeSpecie = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+    ).then((res) => res.json());
 
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`).then(
-      (res) => res.json()
-    );
-    // const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`);
-    // const data = await res.json();
+    const genus = getEnGenus(pokeSpecie);
+    const aboutText = getEnAboutText(pokeSpecie);
+
     const pokeDetails = {
-      name: data.name,
-      id: data.id,
-      type: data.types,
-      height: data.height / 10,
-      weight: data.weight / 10,
-      stats: data.stats,
+      name: pokeAbout.name,
+      id: pokeAbout.id,
+      type: pokeAbout.types,
+      height: pokeAbout.height / 10,
+      weight: pokeAbout.weight / 10,
+      stats: pokeAbout.stats,
+      genus: genus,
+      aboutText: aboutText,
     };
-    console.log(pokeDetails);
+
+    console.log(aboutText);
     return pokeDetails;
   } catch (err) {
     console.log("error getting pokemon details", err);
   }
+};
+
+const getEnGenus = (pokeSpecie) => {
+  for (const entry of pokeSpecie.genera) {
+    if (entry.language.name === "en") {
+      return entry.genus.replace(/ Pokémon$/, "");
+    }
+  }
+  return null;
+};
+
+const getEnAboutText = (pokeSpecie) => {
+  for (const entry of pokeSpecie.flavor_text_entries) {
+    if (entry.language.name === "en" && entry.version.name === "x") {
+      return entry.flavor_text;
+    }
+  }
+  return null;
 };
 
 export { getPokemon, getPokemonDetail };

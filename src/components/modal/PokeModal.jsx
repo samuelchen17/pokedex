@@ -9,7 +9,7 @@ import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import Pearls from "../design/Pearls";
 import PokeAboutText from "./modal-components/PokeAboutText";
 
-function PokeModal({ pokemonId, onClose }) {
+function PokeModal({ pokemonId, onClose, handleAddFavourite, isFavourite }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [pokeId, setPokeId] = useState(pokemonId);
@@ -57,6 +57,7 @@ function PokeModal({ pokemonId, onClose }) {
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}
             />
+            <div onClick={handleAddFavourite}>{isFavourite ? "★" : "☆"}</div>
             <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />

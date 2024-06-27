@@ -31,10 +31,10 @@ function Pokedex({ region, setRegion }) {
   const sortedPokemons = sortPokemons(pokemons, sort);
 
   return (
-    <div>
+    <div className="bg-red-300">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
-        <div className="bg-red-500 py-2 px-2 flex justify-center items-center w-full">
+        <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">
           <div className="flex justify-center items-center flex-col">
             <NavBar setRegion={setRegion} />
 
@@ -52,9 +52,9 @@ function Pokedex({ region, setRegion }) {
               setSort={setSort}
               searchSortVis={searchSortVis}
             />
-            <div className="">
-              <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
-            </div>
+            {/* <div className=""> */}
+            <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
+            {/* </div> */}
           </div>
         </div>
         {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}

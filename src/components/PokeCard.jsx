@@ -42,25 +42,15 @@
 //     </div>
 //   );
 // }
-
-// export default PokeCard;
-
 import React, { useState } from "react";
 import PokeModal from "./modal/PokeModal";
 import TypePill from "./design/TypePill";
 
 function PokeCard({ pokemon }) {
   const [showModal, setShowModal] = useState(false);
-  // might have to lift this state up to be used in pokedex
   const [isFavourite, setIsFavourite] = useState(() =>
     JSON.parse(localStorage.getItem("favourites") || "[]").includes(pokemon.id)
   );
-
-  const getFavourites = () => {
-    return JSON.parse(localStorage.getItem("favourites") || "[]");
-  };
-
-  console.log(getFavourites());
 
   // Add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");

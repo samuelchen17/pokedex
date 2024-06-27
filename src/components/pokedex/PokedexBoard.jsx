@@ -50,6 +50,19 @@ function PokedexBoard({ loading, sortedPokemons }) {
     setFavourites(favouritePokemons);
   }, [sortedPokemons]);
 
+  const getFavourites = () => {
+    return JSON.parse(localStorage.getItem("favourites") || "[]");
+  };
+
+  // test it out
+  useEffect(() => {
+    window.addEventListener("storage", () => {
+      setFavourites(JSON.parse(localStorage.getItem("favourites")) || []);
+    });
+  }, [favourites]);
+
+  console.log(favourites);
+
   return (
     <div className="outline bg-white rounded-xl py-4 px-4">
       <div className="mx-2 mb-2 outline rounded-xl">
@@ -79,3 +92,9 @@ function PokedexBoard({ loading, sortedPokemons }) {
 }
 
 export default PokedexBoard;
+
+// favourites
+// when clicked i want to save it to local Storage,
+// when local storage changes i want the favourites panel to change dynamically
+
+// use custom hook

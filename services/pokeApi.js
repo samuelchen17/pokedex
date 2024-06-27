@@ -99,6 +99,8 @@ const getEnAboutText = (pokeSpecie) => {
   return null;
 };
 
+// const getPokeSprite = ([arrayOfId]) => {arrayOfId.map};
+
 export { getPokemon, getPokemonDetail };
 
 // url for all pokemon

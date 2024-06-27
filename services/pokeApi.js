@@ -1,10 +1,10 @@
 const MAX_POKEMON = 1302;
 const KANTO = [0, 151];
 const JOHTO = [151, 100];
-// const HOENN = 252 - 386
-// const SINNOH = 387 - 493
-// const UNOVA = 494 - 649
-// const KALOS = 650 - 721
+const HOENN = 252 - 386;
+const SINNOH = 387 - 493;
+const UNOVA = 494 - 649;
+const KALOS = 650 - 721;
 
 const test = [0, 20];
 
@@ -15,10 +15,12 @@ const EVO = "https://pokeapi.co/api/v2/evolution-chain/2/";
 const SPES = "https://pokeapi.co/api/v2/pokemon-species/5";
 
 // modify to allow for different regions
-const getPokemon = async () => {
+const getPokemon = async (region) => {
   let pokemons = [];
   try {
-    const data = await fetch(POKE_BASE_URL).then((res) => res.json());
+    const data = await fetch(
+      `https://pokeapi.co/api/v2/pokemon?limit=${region[1]}&offset=${region[0]}`
+    ).then((res) => res.json());
     // const res = await fetch(POKE_BASE_URL);
     // const data = await res.json();
     const pokemonUrls = data.results.map((pokemon) => pokemon.url);

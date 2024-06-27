@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import PokeCard from "../PokeCard";
+
 import { getPokemon } from "../../../services/pokeApi";
 import { sortPokemons } from "../../functions/sort";
-import PokeSort from "./PokeSort";
 
-function Pokedex() {
+import PokedexSort from "./PokedexSort";
+import PokedexBoard from "./PokedexBoard";
+import NavBar from "../nav-bar/NavBar";
+
+function Pokedex({ region, setRegion }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("lowNumFirst");
-  // create a useState for regions
 
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
-        const pokemonData = await getPokemon();
+        const pokemonData = await getPokemon(region);
         setPokemons(pokemonData);
         setLoading(false);
       } catch (err) {
@@ -23,30 +25,24 @@ function Pokedex() {
     };
 
     fetchPokemon();
-  }, []);
+  }, [region]);
 
   const sortedPokemons = sortPokemons(pokemons, sort);
 
   return (
-    <div className="bg-red-500 py-2 px-2 flex justify-center items-center">
-      <div className="flex justify-center items-center flex-col">
-        <div className="flex sm:flex-row sm:justify-between w-full lg:w-[80%] mb-4 mt-2 flex-col items-center text-center">
-          <div className="text-white text-xl font-medium mb-1 sm:mb-0">
-            Showing 1-50
+    <div>
+      <div className="flex flex-row justify-center">
+        {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
+        <div className="bg-red-500 py-2 px-2 flex justify-center items-center w-full">
+          <div className="flex justify-center items-center flex-col">
+            <NavBar setRegion={setRegion} />
+            <PokedexSort sort={sort} setSort={setSort} />
+            <div className="">
+              <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
+            </div>
           </div>
-
-          <PokeSort setSort={setSort} sort={sort} />
         </div>
-        <div className="grid lg:max-w-[80%] outline bg-white rounded-xl grid-cols-1 sms:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center py-4 px-4">
-          {loading ? (
-            // add a spinning circle?
-            <div>Loading...</div>
-          ) : (
-            sortedPokemons.map((pokemon) => (
-              <PokeCard key={pokemon.id} pokemon={pokemon} />
-            ))
-          )}
-        </div>
+        {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import TypePill from "../../TypePill";
+import TypePill from "../../design/TypePill";
 
 function PokeNameNumType({ pokemonDetail, paddedId }) {
   return (

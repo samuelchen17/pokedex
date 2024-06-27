@@ -1,11 +1,13 @@
 import React from "react";
 
-function RegionBtn({ handleOnClick }) {
+function RegionBtn({ handleOnClick, region }) {
   return (
-    <div className="bg-kanto-back outline outline-kanto-border p-1 rounded-md w-[60px] text-wh">
-      <div className="bg-kanto-front rounded-md text-center">
-        <button onClick={handleOnClick} value="0, 151">
-          kanto
+    <div
+      className={`${region.back} outline ${region.border} p-1 rounded-md w-[60px] text-wh my-2 mx-2`}
+    >
+      <div className={`${region.front} rounded-md text-center`}>
+        <button onClick={handleOnClick} value={region.value}>
+          {region.name}
         </button>
       </div>
     </div>

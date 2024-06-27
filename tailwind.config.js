@@ -102,7 +102,7 @@ export default {
         "unova-front": "#9FCADF",
         "unova-back": "#6BAECE",
         "unova-border": "#467186",
-        "kalos-front": "#DD608CF",
+        "kalos-front": "#DD608C",
         "kalos-back": "#CB0B4F",
         "kalos-border": "#840733",
       },

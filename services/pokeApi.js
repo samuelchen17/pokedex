@@ -75,7 +75,6 @@ const getPokemonDetail = async (id) => {
       aboutText: aboutText,
     };
 
-    console.log(aboutText);
     return pokeDetails;
   } catch (err) {
     console.log("error getting pokemon details", err);

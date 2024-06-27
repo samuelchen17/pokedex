@@ -11,6 +11,7 @@ function Pokedex({ region, setRegion }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("lowNumFirst");
+  const [searchSortVis, setSearchSortVis] = useState("true");
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -36,7 +37,21 @@ function Pokedex({ region, setRegion }) {
         <div className="bg-red-500 py-2 px-2 flex justify-center items-center w-full">
           <div className="flex justify-center items-center flex-col">
             <NavBar setRegion={setRegion} />
-            <PokedexSort sort={sort} setSort={setSort} />
+
+            {/* <button
+              onClick={() => {
+                setSearchSortVis(!searchSortVis);
+              }}
+              className="bg-blue-500 text-white px-4 py-2 mb-4"
+            >
+              Toggle Sort
+            </button> */}
+
+            <PokedexSort
+              sort={sort}
+              setSort={setSort}
+              searchSortVis={searchSortVis}
+            />
             <div className="">
               <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Pearls from "../design/Pearls";
-import RegionBtn from "../design/RegionBtn";
+
 import Region from "./Region";
 
 function NavBar({ setRegion }) {
@@ -10,60 +10,41 @@ function NavBar({ setRegion }) {
   const handleOnClick = (event) => {
     const value = event.target.value.split(",").map(Number);
     setRegion(value);
-    console.log(value);
   };
+
   return (
     // fixed z-40 top-0 h-[100px] px-10
-    <div className="flex flex-col bg-red-300 w-full">
+    <div className="flex flex-col bg-red-500 w-full relative">
       <div className="flex flex-ro justify-between">
         <Pearls />
-        <h1 className="text-4xl">Pokedex</h1>
-        <div className="flex justify-end flex-col w-[60px]">
+        {/* <h1 className="text-4xl">Pokedex</h1> */}
+        <div className="flex justify-end flex-row md:w-[40%] w-full h-[30px] mt-2">
           <button
-            className="bg-slate-500 outline"
+            className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 rounded-full mx-2 text-white outline-black"
             onClick={() => setShowFav(true)}
           >
-            favourites popout
+            favourites
           </button>
           <button
-            className="bg-slate-500 outline"
+            className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 rounded-full mx-2 text-white outline-black"
             onClick={() => setShowRegion(true)}
           >
-            region popout
+            region
           </button>
         </div>
       </div>
 
-      <div className="flex flex-row">
+      {/* <div className="flex flex-row">
         <input className="" type="text" placeholder="Search for Pokemon" />
-      </div>
-      <div className="flex flex-col">
-        <RegionBtn handleOnClick={handleOnClick} />
-        {/* <button onClick={handleOnClick} value="151, 100">
-          johto
-        </button>
-        <button onClick={handleOnClick} value="251, 135">
-          hoenn
-        </button>
-        <button onClick={handleOnClick} value="386, 107">
-          Sinnoh
-        </button>
-        <button onClick={handleOnClick} value="493, 156">
-          Unova
-        </button>
-        <button onClick={handleOnClick} value="649, 72">
-          Kalos
-        </button>
-        <button onClick={handleOnClick} value="0, 721">
-          Show All
-        </button> */}
-      </div>
+      </div> */}
+
       {showFav && <Favourites onClose={() => setShowFav(false)} />}
       {showRegion && (
         <Region
           onClose={() => setShowRegion(false)}
           setShowRegion={setShowRegion}
           showRegion={showRegion}
+          handleOnClick={handleOnClick}
         />
       )}
     </div>

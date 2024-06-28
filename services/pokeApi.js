@@ -99,23 +99,7 @@ const getEnAboutText = (pokeSpecie) => {
   return null;
 };
 
-const getFavFromApi = async (id) => {
-  try {
-    const pokefav = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(
-      (res) => res.json()
-    );
-
-    const fav = {
-      name: pokefav.name,
-    };
-    console.log(fav);
-    return fav;
-  } catch (err) {
-    console.log("failed to get fav list", err);
-  }
-};
-
-export { getPokemon, getPokemonDetail, getFavFromApi };
+export { getPokemon, getPokemonDetail };
 
 // url for all pokemon
 // https://pokeapi.co/api/v2/pokemon?limit=151&offset=0

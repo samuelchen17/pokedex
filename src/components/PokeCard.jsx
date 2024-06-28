@@ -46,9 +46,9 @@ import React, { useState } from "react";
 import PokeModal from "./modal/PokeModal";
 import TypePill from "./design/TypePill";
 
-function PokeCard({ pokemon }) {
+function PokeCard({ pokemon, setFavourites }) {
   const [showModal, setShowModal] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(() =>
+  const [isFavourite, setIsFavourite, setFavourites] = useState(() =>
     JSON.parse(localStorage.getItem("favourites") || "[]").includes(pokemon.id)
   );
 
@@ -64,6 +64,8 @@ function PokeCard({ pokemon }) {
       favourites.push(pokemon.id);
     }
     localStorage.setItem("favourites", JSON.stringify(favourites));
+    console.log(favourites);
+    setFavourites(favourites);
     setIsFavourite(!isFavourite);
   };
 

@@ -1,43 +1,9 @@
-// import React from "react";
-// import PokeCard from "../PokeCard";
-
-// function PokedexBoard({ loading, sortedPokemons }) {
-//   return (
-//     <div className="outline bg-white rounded-xl py-4 px-4 ">
-//       <div className="mx-2 mb-2 outline rounded-xl">
-//         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center overflow-hidden overflow-y-scroll">
-//           {loading ? (
-//             // add a spinning circle?
-//             <div>Loading...</div>
-//           ) : (
-//             favourites.map((pokemon) => (
-//               <PokeCard key={pokemon.id} pokemon={pokemon} />
-//             ))
-//           )}
-//         </div>
-//       </div>
-//       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center overflow-hidden overflow-y-scroll">
-//         {loading ? (
-//           // add a spinning circle?
-//           <div>Loading...</div>
-//         ) : (
-//           sortedPokemons.map((pokemon) => (
-//             <PokeCard key={pokemon.id} pokemon={pokemon} />
-//           ))
-//         )}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default PokedexBoard;
-
 import React, { useEffect, useState } from "react";
 import PokeCard from "../PokeCard";
 
 function PokedexBoard({ loading, sortedPokemons }) {
   // grab initial local storage
-  const [favourites, setFavouritesWhat] = useState(
+  const [favouritesList, setFavouritesList] = useState(
     JSON.parse(localStorage.getItem("favourites") || "[]")
   );
   const getFavourites = () => {
@@ -53,7 +19,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <div>Loading...</div>
           ) : (
             // map favourites and grab detail using api
-            favourites.map((id, index) => {
+            favouritesList.map((id, index) => {
               const paddedId = id.toString().padStart(3, "0");
               return (
                 <img
@@ -74,7 +40,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <PokeCard
               key={pokemon.id}
               pokemon={pokemon}
-              setFavouritesWhat={setFavouritesWhat}
+              setFavouritesList={setFavouritesList}
             />
           ))
         )}

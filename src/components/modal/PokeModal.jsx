@@ -6,7 +6,6 @@ import PokeNameNumType from "./modal-components/PokeNameNumType";
 import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
-import Pearls from "../design/Pearls";
 import PokeAboutText from "./modal-components/PokeAboutText";
 
 function PokeModal({ pokemonId, onClose, handleAddFavourite, isFavourite }) {

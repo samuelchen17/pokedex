@@ -37,7 +37,7 @@ import PokeCard from "../PokeCard";
 
 function PokedexBoard({ loading, sortedPokemons }) {
   // grab initial local storage
-  const [favourites, setFavourites] = useState(
+  const [favourites, setFavouritesWhat] = useState(
     JSON.parse(localStorage.getItem("favourites") || "[]")
   );
   const getFavourites = () => {
@@ -74,7 +74,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <PokeCard
               key={pokemon.id}
               pokemon={pokemon}
-              setFavourites={setFavourites}
+              setFavouritesWhat={setFavouritesWhat}
             />
           ))
         )}

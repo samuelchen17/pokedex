@@ -4,7 +4,7 @@ import TypePill from "./design/TypePill";
 
 function PokeCard({ pokemon, setFavouritesList }) {
   const [showModal, setShowModal] = useState(false);
-  const [isFavourite, setIsFavourite, setFavourites] = useState(() =>
+  const [isFavourite, setIsFavourite] = useState(() =>
     JSON.parse(localStorage.getItem("favourites") || "[]").includes(pokemon.id)
   );
 

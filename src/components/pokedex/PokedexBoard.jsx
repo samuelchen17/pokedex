@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PokeCard from "../PokeCard";
+import { sortPokemons } from "../../functions/sort";
 
 function PokedexBoard({ loading, sortedPokemons }) {
   // grab initial local storage
@@ -13,7 +14,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
   return (
     <div className="outline bg-white rounded-xl py-4 px-4">
       <div className="mx-2 mb-2 outline rounded-xl">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center overflow-hidden overflow-y-scroll">
+        <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 justify-items-center overflow-hidden overflow-y-scroll">
           {loading ? (
             // add a spinning circle?
             <div>Loading...</div>

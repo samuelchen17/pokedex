@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import PokeCard from "../PokeCard";
 import { sortPokemons } from "../../functions/sort";
+import PokeFav from "./PokeFav";
 
 function PokedexBoard({ loading, sortedPokemons }) {
   // grab initial local storage
   const [favouritesList, setFavouritesList] = useState(
     JSON.parse(localStorage.getItem("favourites") || "[]")
   );
-  const getFavourites = () => {
-    return JSON.parse(localStorage.getItem("favourites") || "[]");
-  };
 
   return (
     <div className="outline bg-white rounded-xl py-4 px-4">
@@ -20,15 +18,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <div>Loading...</div>
           ) : (
             // map favourites and grab detail using api
-            favouritesList.map((id, index) => {
-              const paddedId = id.toString().padStart(3, "0");
-              return (
-                <img
-                  key={index}
-                  src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
-                />
-              );
-            })
+            favouritesList.map((id, index) => <PokeFav key={index} id={id} />)
           )}
         </div>
       </div>

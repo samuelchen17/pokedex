@@ -42,7 +42,15 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <div>Loading...</div>
           ) : (
             // map favourites and grab detail using api
-            favouritesList.map((id, index) => <PokeFav key={index} id={id} />)
+            favouritesList.map((id, index) => (
+              <PokeFav
+                key={index}
+                id={id}
+                handleAddFavourite={handleAddFavourite}
+                isFavourite={favouritesList.includes(id)}
+                onClick={() => handlePokeClick(id)}
+              />
+            ))
           )}
         </div>
       </div>

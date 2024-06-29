@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import PokeModal from "./modal/PokeModal";
+
 import TypePill from "./design/TypePill";
 
-function PokeCard({ pokemon, handleAddFavourite, isFavourite }) {
-  const [showModal, setShowModal] = useState(false);
-
-  // Add the zeros in front
+function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
   const paddedId = pokemon.id.toString().padStart(3, "0");
 
   const handleFavClick = (event) => {
@@ -17,7 +14,7 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite }) {
     <div>
       <div
         className="hover:animate-bounceOnce cursor-pointer bg-slate-300 outline rounded-xl py-2 px-2 my-2 mx-2"
-        onClick={() => setShowModal(true)}
+        onClick={onClick}
       >
         <div className="bg-slate-200 rounded-xl">
           <div className="flex justify-between">
@@ -41,14 +38,6 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite }) {
           </div>
         </div>
       </div>
-      {showModal && (
-        <PokeModal
-          pokemonId={pokemon.id}
-          onClose={() => setShowModal(false)}
-          handleAddFavourite={handleFavClick}
-          isFavourite={isFavourite}
-        />
-      )}
     </div>
   );
 }

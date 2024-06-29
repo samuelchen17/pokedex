@@ -23,8 +23,8 @@ function PokedexBoard({ loading, sortedPokemons }) {
     setFavouritesList(favourites);
   };
 
-  const handlePokeClick = (pokemon) => {
-    setSelectedPokemon(pokemon);
+  const handlePokeClick = (pokeId) => {
+    setSelectedPokemon(pokeId);
     setShowModal(true);
   };
 
@@ -57,17 +57,17 @@ function PokedexBoard({ loading, sortedPokemons }) {
               pokemon={pokemon}
               handleAddFavourite={handleAddFavourite}
               isFavourite={favouritesList.includes(pokemon.id)}
-              onClick={() => handlePokeClick(pokemon)}
+              onClick={() => handlePokeClick(pokemon.id)}
             />
           ))
         )}
       </div>
       {showModal && selectedPokemon && (
         <PokeModal
-          pokemonId={selectedPokemon.id}
+          pokemonId={selectedPokemon}
           onClose={closeModal}
-          handleAddFavourite={() => handleAddFavourite(selectedPokemon.id)}
-          isFavourite={favouritesList.includes(selectedPokemon.id)}
+          handleAddFavourite={() => handleAddFavourite(selectedPokemon)}
+          isFavourite={favouritesList.includes(selectedPokemon)}
         />
       )}
     </div>

@@ -2,27 +2,15 @@ import React, { useState } from "react";
 import PokeModal from "./modal/PokeModal";
 import TypePill from "./design/TypePill";
 
-function PokeCard({ pokemon, setFavouritesList }) {
+function PokeCard({ pokemon, handleAddFavourite, isFavourite }) {
   const [showModal, setShowModal] = useState(false);
-  const [isFavourite, setIsFavourite] = useState(() =>
-    JSON.parse(localStorage.getItem("favourites") || "[]").includes(pokemon.id)
-  );
 
   // Add the zeros in front
   const paddedId = pokemon.id.toString().padStart(3, "0");
 
-  const handleAddFavourite = (event) => {
+  const handleFavClick = (event) => {
     event.stopPropagation();
-    let favourites = JSON.parse(localStorage.getItem("favourites") || "[]");
-    if (favourites.includes(pokemon.id)) {
-      favourites = favourites.filter((fav) => fav !== pokemon.id);
-    } else {
-      favourites.push(pokemon.id);
-    }
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-    console.log(favourites);
-    setFavouritesList(favourites);
-    setIsFavourite(!isFavourite);
+    handleAddFavourite(pokemon.id);
   };
 
   return (
@@ -34,7 +22,7 @@ function PokeCard({ pokemon, setFavouritesList }) {
         <div className="bg-slate-200 rounded-xl">
           <div className="flex justify-between">
             <div className="pl-2 pt-1">#{paddedId}</div>
-            <div onClick={handleAddFavourite}>{isFavourite ? "★" : "☆"}</div>
+            <div onClick={handleFavClick}>{isFavourite ? "★" : "☆"}</div>
           </div>
           <div className="flex justify-center">
             <img
@@ -57,7 +45,7 @@ function PokeCard({ pokemon, setFavouritesList }) {
         <PokeModal
           pokemonId={pokemon.id}
           onClose={() => setShowModal(false)}
-          handleAddFavourite={handleAddFavourite}
+          handleAddFavourite={handleFavClick}
           isFavourite={isFavourite}
         />
       )}

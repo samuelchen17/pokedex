@@ -9,6 +9,17 @@ function PokedexBoard({ loading, sortedPokemons }) {
     JSON.parse(localStorage.getItem("favourites") || "[]")
   );
 
+  const handleAddFavourite = (pokeId) => {
+    let favourites = JSON.parse(localStorage.getItem("favourites") || "[]");
+    if (favourites.includes(pokeId)) {
+      favourites = favourites.filter((fav) => fav !== pokeId);
+    } else {
+      favourites.push(pokeId);
+    }
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+    setFavouritesList(favourites);
+  };
+
   return (
     <div className="outline bg-white rounded-xl py-4 px-4">
       <div className="mx-2 mb-2 outline rounded-xl">
@@ -31,7 +42,8 @@ function PokedexBoard({ loading, sortedPokemons }) {
             <PokeCard
               key={pokemon.id}
               pokemon={pokemon}
-              setFavouritesList={setFavouritesList}
+              handleAddFavourite={handleAddFavourite}
+              isFavourite={favouritesList.includes(pokemon.id)}
             />
           ))
         )}

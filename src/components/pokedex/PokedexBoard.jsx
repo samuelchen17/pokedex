@@ -76,7 +76,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
       </div>
       {showModal && selectedPokemon && (
         <PokeModal
-          pokemonId={selectedPokemon}
+          pokeId={selectedPokemon}
           onClose={closeModal}
           handleAddFavourite={() => handleAddFavourite(selectedPokemon)}
           isFavourite={favouritesList.includes(selectedPokemon)}

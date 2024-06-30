@@ -23,7 +23,7 @@ const getPokemon = async (region) => {
     ).then((res) => res.json());
     // const res = await fetch(POKE_BASE_URL);
     // const data = await res.json();
-    console.log(data);
+    // console.log(data);
     const pokemonUrls = data.results.map((pokemon) => pokemon.url);
 
     pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));

@@ -9,7 +9,7 @@ import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import PokeAboutText from "./modal-components/PokeAboutText";
 
 function PokeModal({
-  pokemonId,
+  pokeId,
   onClose,
   handleAddFavourite,
   isFavourite,
@@ -17,7 +17,6 @@ function PokeModal({
 }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [loading, setLoading] = useState(true);
-  const [pokeId, setPokeId] = useState(pokemonId);
 
   const paddedId = pokeId.toString().padStart(3, "0");
   let statTotal = 0;
@@ -38,7 +37,6 @@ function PokeModal({
   }, [pokeId]);
 
   const handleOnClick = (increment) => {
-    setPokeId(pokeId + increment);
     setSelectedPokemon(pokeId + increment);
     // if less than 0 do nothing
     // if more than display 54 - x do nothing

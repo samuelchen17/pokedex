@@ -31,7 +31,7 @@ function Pokedex({ region, setRegion }) {
   const sortedPokemons = sortPokemons(pokemons, sort);
 
   return (
-    <div className="bg-red-300 h-[100vh]">
+    <div className="bg-red-300">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">

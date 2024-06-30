@@ -23,6 +23,7 @@ const getPokemon = async (region) => {
     ).then((res) => res.json());
     // const res = await fetch(POKE_BASE_URL);
     // const data = await res.json();
+    console.log(data);
     const pokemonUrls = data.results.map((pokemon) => pokemon.url);
 
     pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));
@@ -37,6 +38,7 @@ const getPokemon = async (region) => {
 // should return objects or a list of objects
 const getPokemonInfo = async (url) => {
   try {
+    // console.log(url);
     const data = await fetch(url).then((res) => res.json());
     // const res = await fetch(url);
     // const data = await res.json();

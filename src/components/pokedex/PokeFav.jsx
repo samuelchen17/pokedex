@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getPokemonDetail } from "../../../services/pokeApi";
 
 function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
   const paddedId = id.toString().padStart(3, "0");
+  const [pokemonDetail, setPokemonDetail] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const handleFavClick = (event) => {
     event.stopPropagation();
@@ -11,23 +14,50 @@ function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
   // add use effect to get name of pokemon
   // write a new api to get only name of pokemon
 
+  useEffect(() => {
+    const fetchPokeDetail = async () => {
+      try {
+        const pokeDetail = await getPokemonDetail(id);
+        setPokemonDetail(pokeDetail);
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+        setLoading(false);
+      }
+    };
+
+    fetchPokeDetail();
+  }, [id]);
+
   return (
     <div
-      className="hover:animate-bounceOnce cursor-pointer bg-slate-300 outline rounded-xl py-2 px-2 my-2 mx-2"
+      className="hover:animate-bounceOnce bg-red-500 outline cursor-pointer rounded-xl py-2 px-2 my-2 mx-2 max-w-[150px]"
       onClick={onClick}
     >
-      <div className="rounded-xl bg-slate-200">
-        <div className="flex justify-between">
-          <div>#001</div>
-          <div onClick={handleFavClick} className="outline">
-            {isFavourite ? "★" : "☆"}
+      {loading ? (
+        // add a spinning circle?
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className="rounded-xl outline bg-slate-100">
+            <div className="flex justify-between">
+              <div className="pl-2 pt-1">#{paddedId}</div>
+              <div onClick={handleFavClick} className="outline">
+                {isFavourite ? "★" : "☆"}
+              </div>
+            </div>
+            <div className="relative w-[100px] h-[85px] overflow-hidden">
+              <img
+                className="absolute top-[-70px] left-0 w-full h-[150px] object-cover"
+                src={`https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen7x/regular/${pokemonDetail.name}.png`}
+                alt={`${pokemonDetail.name} sprite`}
+                style={{ imageRendering: "pixelated" }}
+              />
+            </div>
+            <div className="text-center capitalize">{pokemonDetail.name}</div>
           </div>
-        </div>
-        <img
-          src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
-        />
-      </div>
-      <div>name</div>
+        </>
+      )}
     </div>
   );
 }

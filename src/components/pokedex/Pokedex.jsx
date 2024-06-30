@@ -61,9 +61,7 @@ function Pokedex({ region, setRegion }) {
               setSort={setSort}
               searchSortVis={searchSortVis}
             />
-            {/* <div className=""> */}
             <PokedexBoard loading={loading} sortedPokemons={filteredPokemons} />
-            {/* </div> */}
           </div>
         </div>
         {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}

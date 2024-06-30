@@ -6,8 +6,8 @@ function PokeModalNavBar({ handleOnClick, onClose }) {
     <div className="flex justify-between">
       <Pearls />
       <div className="flex flex-col w-full items-end justify-between py-3">
-        <div className="flex justify-end" onClick={onClose}>
-          cross
+        <div className="flex justify-end cursor-pointer" onClick={onClose}>
+          [x]
         </div>
         <div className="flex justify-end sms:w-[60%] w-full">
           <div className="flex flex-row justify-between h-full text-center w-[100%]">

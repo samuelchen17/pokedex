@@ -19,7 +19,7 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
         <div className="bg-slate-200 rounded-xl">
           <div className="flex justify-between">
             <div className="pl-2 pt-1">#{paddedId}</div>
-            <div className="outline" onClick={handleFavClick}>
+            <div className="" onClick={handleFavClick}>
               {isFavourite ? "★" : "☆"}
             </div>
           </div>

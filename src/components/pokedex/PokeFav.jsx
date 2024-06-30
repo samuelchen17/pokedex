@@ -42,7 +42,7 @@ function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
           <div className="rounded-xl outline bg-slate-100">
             <div className="flex justify-between">
               <div className="pl-2 pt-1">#{paddedId}</div>
-              <div onClick={handleFavClick} className="outline">
+              <div onClick={handleFavClick} className="">
                 {isFavourite ? "★" : "☆"}
               </div>
             </div>

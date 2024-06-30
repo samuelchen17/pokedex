@@ -8,7 +8,13 @@ import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import PokeAboutText from "./modal-components/PokeAboutText";
 
-function PokeModal({ pokemonId, onClose, handleAddFavourite, isFavourite }) {
+function PokeModal({
+  pokemonId,
+  onClose,
+  handleAddFavourite,
+  isFavourite,
+  setSelectedPokemon,
+}) {
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [loading, setLoading] = useState(true);
   const [pokeId, setPokeId] = useState(pokemonId);
@@ -33,6 +39,7 @@ function PokeModal({ pokemonId, onClose, handleAddFavourite, isFavourite }) {
 
   const handleOnClick = (increment) => {
     setPokeId(pokeId + increment);
+    setSelectedPokemon(pokeId + increment);
     // if less than 0 do nothing
     // if more than display 54 - x do nothing
     // or make it loop to the biggest and vice versa
@@ -56,7 +63,12 @@ function PokeModal({ pokemonId, onClose, handleAddFavourite, isFavourite }) {
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}
             />
-            <div onClick={handleAddFavourite}>{isFavourite ? "★" : "☆"}</div>
+            <div
+              className="flex justify-end px-2 py-2"
+              onClick={handleAddFavourite}
+            >
+              {isFavourite ? "★" : "☆"}
+            </div>
             <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />

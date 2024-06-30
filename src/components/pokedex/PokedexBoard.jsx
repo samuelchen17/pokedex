@@ -37,7 +37,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
     <div className="outline bg-white rounded-xl py-4 px-4">
       <div className="mx-2 mb-2 rounded-xl">
         <div className="text-center text-3xl uppercase pb-2">Favourites</div>
-        <div className="grid grid-cols-2 sms:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 justify-items-center overflow-hidden overflow-y-scroll">
+        <div className="grid grid-cols-2 sms:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 justify-items-center overflow-hidden">
           {loading ? (
             // add a spinning circle?
             <div>Loading...</div>
@@ -55,10 +55,13 @@ function PokedexBoard({ loading, sortedPokemons }) {
           )}
         </div>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center overflow-hidden overflow-y-scroll">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center overflow-hidden pt-2">
         {loading ? (
-          // add a spinning circle?
           <div>Loading...</div>
+        ) : sortedPokemons.length === 0 ? (
+          <div className="text-center col-span-2 md:col-span-3 lg:col-span-4 ">
+            No Pokemon found, try other regions or all.
+          </div>
         ) : (
           sortedPokemons.map((pokemon) => (
             <PokeCard
@@ -77,6 +80,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
           onClose={closeModal}
           handleAddFavourite={() => handleAddFavourite(selectedPokemon)}
           isFavourite={favouritesList.includes(selectedPokemon)}
+          setSelectedPokemon={setSelectedPokemon}
         />
       )}
     </div>

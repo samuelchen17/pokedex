@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Pearls from "../design/Pearls";
 
 import Region from "./Region";
+import Search from "./Search";
 
-function NavBar({ setRegion }) {
+function NavBar({ setRegion, searchParam, setSearchParam }) {
   const [showFav, setShowFav] = useState(false);
   const [showRegion, setShowRegion] = useState(false);
 
@@ -34,9 +35,7 @@ function NavBar({ setRegion }) {
         </div>
       </div>
 
-      {/* <div className="flex flex-row">
-        <input className="" type="text" placeholder="Search for Pokemon" />
-      </div> */}
+      <Search searchParam={searchParam} setSearchParam={setSearchParam} />
 
       {showFav && <Favourites onClose={() => setShowFav(false)} />}
       {showRegion && (

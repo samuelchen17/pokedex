@@ -12,6 +12,7 @@ function Pokedex({ region, setRegion }) {
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("lowNumFirst");
   const [searchSortVis, setSearchSortVis] = useState("true");
+  const [searchParam, setSearchParam] = useState("");
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -30,13 +31,21 @@ function Pokedex({ region, setRegion }) {
 
   const sortedPokemons = sortPokemons(pokemons, sort);
 
+  const filteredPokemons = sortedPokemons.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchParam.toLowerCase())
+  );
+
   return (
     <div className="bg-red-300">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">
           <div className="flex justify-center items-center flex-col">
-            <NavBar setRegion={setRegion} />
+            <NavBar
+              setRegion={setRegion}
+              searchParam={searchParam}
+              setSearchParam={setSearchParam}
+            />
 
             {/* <button
               onClick={() => {
@@ -53,7 +62,7 @@ function Pokedex({ region, setRegion }) {
               searchSortVis={searchSortVis}
             />
             {/* <div className=""> */}
-            <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
+            <PokedexBoard loading={loading} sortedPokemons={filteredPokemons} />
             {/* </div> */}
           </div>
         </div>

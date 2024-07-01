@@ -31,8 +31,10 @@ function Pokedex({ region, setRegion }) {
 
   const sortedPokemons = sortPokemons(pokemons, sort);
 
-  const filteredPokemons = sortedPokemons.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(searchParam.toLowerCase())
+  const filteredPokemons = sortedPokemons.filter(
+    (pokemon) =>
+      pokemon.name.toLowerCase().includes(searchParam.toLowerCase()) ||
+      pokemon.id.toString().includes(searchParam)
   );
 
   return (

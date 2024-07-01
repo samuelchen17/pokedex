@@ -9,7 +9,7 @@ function Search({ searchParam, setSearchParam }) {
       <input
         className=""
         type="text"
-        placeholder="Search for Pokemon"
+        placeholder="Search for Pokemon by name or ID"
         value={searchParam}
         onChange={handleChange}
       />

@@ -43,6 +43,12 @@ function PokeModal({
     // or make it loop to the biggest and vice versa
   };
 
+  const playSound = (event) => {
+    event.stopPropagation();
+    const audio = new Audio(pokemonDetail.cry);
+    audio.play();
+  };
+
   return (
     <div
       className="fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
@@ -71,7 +77,9 @@ function PokeModal({
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />
-            <div>sound icon</div>
+            <div onClick={playSound} className="outline">
+              sound icon
+            </div>
           </div>
         </div>
       )}

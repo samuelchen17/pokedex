@@ -75,7 +75,10 @@ const getPokemonDetail = async (id) => {
       stats: pokeAbout.stats,
       genus: genus,
       aboutText: aboutText,
+      cry: pokeAbout.cries.latest,
     };
+
+    // console.log(pokeDetails);
 
     return pokeDetails;
   } catch (err) {

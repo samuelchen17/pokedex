@@ -34,13 +34,17 @@ function PokedexBoard({ loading, sortedPokemons }) {
   };
 
   return (
-    <div className="outline bg-white rounded-xl py-4 px-4">
+    <div className="outline bg-white rounded-xl py-4 px-4 min-h-[70vh]">
       <div className="mx-2 mb-2 rounded-xl">
         <div className="text-center text-3xl uppercase pb-2">Favourites</div>
         <div className="grid grid-cols-2 sms:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 justify-items-center overflow-hidden">
           {loading ? (
             // add a spinning circle?
             <div>Loading...</div>
+          ) : favouritesList.length === 0 ? (
+            <div className="text-center col-span-2 sms:col-span-3 md:col-span-5 lg:col-span-6">
+              No favourites, please add to favourites by clicking the star
+            </div>
           ) : (
             // map favourites and grab detail using api
             favouritesList.map((id, index) => (

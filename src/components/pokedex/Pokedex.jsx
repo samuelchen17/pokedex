@@ -38,16 +38,24 @@ function Pokedex({ region, setRegion }) {
   );
 
   return (
-    <div className="bg-red-300">
+    <div className="bg-red-300 min-h-[100vh]">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">
           <div className="flex justify-center items-center flex-col">
-            <NavBar
-              setRegion={setRegion}
-              searchParam={searchParam}
-              setSearchParam={setSearchParam}
-            />
+            <div className="flex justify-center items-center flex-col outline-blue-500 outline w-full">
+              <NavBar
+                setRegion={setRegion}
+                searchParam={searchParam}
+                setSearchParam={setSearchParam}
+              />
+              <PokedexSort
+                sort={sort}
+                setSort={setSort}
+                searchSortVis={searchSortVis}
+                region={region}
+              />
+            </div>
 
             {/* <button
               onClick={() => {
@@ -58,12 +66,6 @@ function Pokedex({ region, setRegion }) {
               Toggle Sort
             </button> */}
 
-            <PokedexSort
-              sort={sort}
-              setSort={setSort}
-              searchSortVis={searchSortVis}
-              region={region}
-            />
             <PokedexBoard loading={loading} sortedPokemons={filteredPokemons} />
           </div>
         </div>

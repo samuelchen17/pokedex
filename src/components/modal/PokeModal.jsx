@@ -58,11 +58,13 @@ function PokeModal({
         <div className="text-white">Loading ...</div>
       ) : (
         <div
-          className={`overflow-hidden bg-red-500 max-w-[600px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] outline`}
+          className={`overflow-hidden bg-red-500 max-w-[600px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
           onClick={(event) => event.stopPropagation()}
         >
-          <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
-          <div className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%]">
+          <div className="outline">
+            <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
+          </div>
+          <div className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[80px]">
             <PokeNameNumType
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}

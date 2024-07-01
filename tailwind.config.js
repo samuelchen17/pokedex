@@ -52,6 +52,7 @@ export default {
     extend: {
       screens: {
         sms: "450px",
+        // minh: { raw: "(min-height: 360px)" },
       },
 
       animation: {
@@ -108,16 +109,5 @@ export default {
       },
     },
   },
-  plugins: [
-    // plugin(function ({ addUtilities }) {
-    //   const newUtilities = {
-    //     ".grass": {
-    //       backgroundColor: "#9bcc50",
-    //       color: "#000000",
-    //       borderRadius: "0.375rem",
-    //     },
-    //   };
-    //   addUtilities(newUtilities, ["responsive", "hover"]);
-    // }),
-  ],
+  plugins: [],
 };

@@ -66,6 +66,9 @@ const getPokemonDetail = async (id) => {
     const genus = getEnGenus(pokeSpecie);
     const aboutText = getEnAboutText(pokeSpecie);
 
+    const typesUrl = pokeAbout.types.map((type) => type.type.url);
+    getTypeWeakness(typesUrl);
+
     const pokeDetails = {
       name: pokeAbout.name,
       id: pokeAbout.id,
@@ -84,6 +87,22 @@ const getPokemonDetail = async (id) => {
   } catch (err) {
     console.log("error getting pokemon details", err);
   }
+};
+
+const getTypeEffectiveness = async (typeUrl) => {
+  try {
+    const data = await fetch(typeUrl).then((res) => res.json());
+    // console.log(data.damage_relations);
+    return data.damage_relations;
+  } catch (err) {
+    console.log("error getting typ effectiveness", err);
+  }
+};
+
+const getTypeWeakness = async (typesUrl) => {
+  const typeResistance = await Promise.all(typesUrl.map(getTypeEffectiveness));
+  console.log(typeResistance);
+  // combine the resistance and weaknesses
 };
 
 const getEnGenus = (pokeSpecie) => {

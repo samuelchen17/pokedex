@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  .notchClip {
-    clip-path: inset(0 50% 0 0);
-  }
 }
 @layer components {
   .bug {

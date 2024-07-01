@@ -45,7 +45,13 @@ function Region({ showRegion, setShowRegion, handleOnClick }) {
       border: "outline-kalos-border",
       front: "bg-kalos-front",
     },
-    // { name: "all", value: "0, 721" },
+    {
+      name: "all",
+      value: "0, 721",
+      back: "bg-slate-400",
+      border: "outline-black",
+      front: "bg-slate-200",
+    },
   ];
 
   return (

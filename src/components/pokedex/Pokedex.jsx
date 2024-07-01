@@ -60,6 +60,7 @@ function Pokedex({ region, setRegion }) {
               sort={sort}
               setSort={setSort}
               searchSortVis={searchSortVis}
+              region={region}
             />
             <PokedexBoard loading={loading} sortedPokemons={filteredPokemons} />
           </div>

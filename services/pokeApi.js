@@ -67,7 +67,7 @@ const getPokemonDetail = async (id) => {
     const aboutText = getEnAboutText(pokeSpecie);
 
     const typesUrl = pokeAbout.types.map((type) => type.type.url);
-    getTypeWeakness(typesUrl);
+    getWeakness(typesUrl);
 
     const pokeDetails = {
       name: pokeAbout.name,
@@ -89,20 +89,39 @@ const getPokemonDetail = async (id) => {
   }
 };
 
-const getTypeEffectiveness = async (typeUrl) => {
+const getTypeDamageRelation = async (typeUrl) => {
   try {
     const data = await fetch(typeUrl).then((res) => res.json());
     // console.log(data.damage_relations);
     return data.damage_relations;
   } catch (err) {
-    console.log("error getting typ effectiveness", err);
+    console.log("error getting type  effectiveness", err);
   }
 };
 
-const getTypeWeakness = async (typesUrl) => {
-  const typeResistance = await Promise.all(typesUrl.map(getTypeEffectiveness));
-  console.log(typeResistance);
-  // combine the resistance and weaknesses
+const getWeakness = async (typesUrl) => {
+  const typeDamageRelations = await Promise.all(
+    typesUrl.map(getTypeDamageRelation)
+  );
+  console.log(typeDamageRelations);
+  // combine the resistance and weaknesses and no damage from
+  // make weaknesses an array of objects, each object will have a type and multiplier
+  const weaknesses = {};
+  const resistance = {};
+  const immune = {};
+  typeDamageRelations.forEach((damageRel) => {
+    damageRel.double_damage_from.forEach((type) => {
+      if (!weaknesses[type.name]) {
+        weaknesses[type.name] = 2;
+      } else {
+        weaknesses[type.name] *= 2;
+      }
+      // damageRel.no_damage_from.forEach((type) => {
+      //   weaknesses[type] = 0;
+      // });
+    });
+  });
+  console.log(weaknesses);
 };
 
 const getEnGenus = (pokeSpecie) => {

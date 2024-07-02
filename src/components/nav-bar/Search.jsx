@@ -5,9 +5,9 @@ function Search({ searchParam, setSearchParam }) {
     setSearchParam(event.target.value);
   };
   return (
-    <div className="flex flex-row">
+    <div className="my-2 mx-2">
       <input
-        className=""
+        className="md:w-[50%] w-full rounded-xl h-10 pl-2 outline outline-red-700"
         type="text"
         placeholder="Search for Pokemon by name or ID"
         value={searchParam}

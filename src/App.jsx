@@ -8,7 +8,6 @@ function App() {
   return (
     <>
       <Pokedex setRegion={setRegion} region={region} />
-      {/* <Footer /> */}
     </>
   );
 }

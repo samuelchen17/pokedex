@@ -14,6 +14,10 @@ function Pokedex({ region, setRegion }) {
   const [searchSortVis, setSearchSortVis] = useState("true");
   const [searchParam, setSearchParam] = useState("");
 
+  const toTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -38,12 +42,12 @@ function Pokedex({ region, setRegion }) {
   );
 
   return (
-    <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh">
+    <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh relative">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">
           <div className="flex justify-center items-center flex-col">
-            <div className="flex justify-center items-center flex-col outline-blue-500 outline w-full">
+            <div className="flex justify-center items-center flex-col w-full">
               <NavBar
                 setRegion={setRegion}
                 searchParam={searchParam}
@@ -71,6 +75,12 @@ function Pokedex({ region, setRegion }) {
         </div>
         {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}
       </div>
+      <button
+        className="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-xl shadow-md"
+        onClick={toTop}
+      >
+        Top
+      </button>
     </div>
   );
 }

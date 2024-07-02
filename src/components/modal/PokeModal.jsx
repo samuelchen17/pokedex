@@ -70,20 +70,22 @@ function PokeModal({
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}
             />
-            <div
-              className="flex justify-end px-2 py-2"
-              onClick={handleAddFavourite}
-            >
-              {isFavourite ? "★" : "☆"}
+            <div className="flex justify-between">
+              <div
+                className="flex justify-end px-2 py-2"
+                onClick={handleAddFavourite}
+              >
+                {isFavourite ? "★" : "☆"}
+              </div>
+              <div onClick={playSound} className="outline">
+                sound icon
+              </div>
             </div>
             <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />
             <Susceptibility susceptibility={pokemonDetail.susceptibility} />
-            <div onClick={playSound} className="outline">
-              sound icon
-            </div>
           </div>
         </div>
       )}

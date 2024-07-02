@@ -7,6 +7,7 @@ import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import PokeAboutText from "./modal-components/PokeAboutText";
+import TypePill from "../design/TypePill";
 
 function PokeModal({
   pokeId,
@@ -38,7 +39,7 @@ function PokeModal({
 
   const handleOnClick = (increment) => {
     setSelectedPokemon(pokeId + increment);
-    // if less than 0 do nothing
+    // if less than region[0] or more than region[1]
     // if more than display 54 - x do nothing
     // or make it loop to the biggest and vice versa
   };
@@ -81,6 +82,16 @@ function PokeModal({
             <PokeStats stats={pokemonDetail.stats} />
             <div onClick={playSound} className="outline">
               sound icon
+            </div>
+            <div>
+              <div>Weaknesses</div>
+              <div>
+                {pokemonDetail.susceptibility.weakness.map((type) => (
+                  <TypePill type={type} />
+                ))}
+              </div>
+              <div>Resistances</div>
+              <div>Immunity to</div>
             </div>
           </div>
         </div>

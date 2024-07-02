@@ -67,7 +67,7 @@ const getPokemonDetail = async (id) => {
     const aboutText = getEnAboutText(pokeSpecie);
 
     const typesUrl = pokeAbout.types.map((type) => type.type.url);
-    getWeakness(typesUrl);
+    const susceptibility = await getSusceptibility(typesUrl);
 
     const pokeDetails = {
       name: pokeAbout.name,
@@ -79,9 +79,10 @@ const getPokemonDetail = async (id) => {
       genus: genus,
       aboutText: aboutText,
       cry: pokeAbout.cries.latest,
+      susceptibility: susceptibility,
     };
 
-    // console.log(pokeDetails);
+    console.log(pokeDetails);
 
     return pokeDetails;
   } catch (err) {
@@ -99,16 +100,16 @@ const getTypeDamageRelation = async (typeUrl) => {
   }
 };
 
-const getWeakness = async (typesUrl) => {
+const getSusceptibility = async (typesUrl) => {
   const typeDamageRelations = await Promise.all(
     typesUrl.map(getTypeDamageRelation)
   );
-  console.log(typeDamageRelations);
+  // console.log(typeDamageRelations);
   // combine the resistance and weaknesses and no damage from
   // make weaknesses an array of objects, each object will have a type and multiplier
   const weaknesses = {};
-  const resistance = {};
-  const immune = {};
+  const resistances = {};
+  const immunity = {};
   typeDamageRelations.forEach((damageRel) => {
     damageRel.double_damage_from.forEach((type) => {
       if (!weaknesses[type.name]) {
@@ -116,12 +117,32 @@ const getWeakness = async (typesUrl) => {
       } else {
         weaknesses[type.name] *= 2;
       }
-      // damageRel.no_damage_from.forEach((type) => {
-      //   weaknesses[type] = 0;
-      // });
     });
   });
-  console.log(weaknesses);
+  typeDamageRelations.forEach((damageRel) => {
+    damageRel.half_damage_from.forEach((type) => {
+      if (weaknesses[type.name]) {
+        delete weaknesses[type.name];
+      } else {
+        resistances[type.name] = 0.5;
+      }
+    });
+  });
+  typeDamageRelations.forEach((damageRel) => {
+    damageRel.no_damage_from.forEach((type) => {
+      if (weaknesses[type.name]) {
+        delete weaknesses[type.name];
+      }
+      immunity[type.name] = 0;
+    });
+  });
+  const susceptibility = {
+    weaknesses,
+    resistances,
+    immunity,
+  };
+  // console.log("susceptibility", susceptibility);
+  return susceptibility;
 };
 
 const getEnGenus = (pokeSpecie) => {

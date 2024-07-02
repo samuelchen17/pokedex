@@ -33,7 +33,7 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
         </div>
         <div>
           <div className="py-1 text-xl capitalize">{pokemon.name}</div>
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-2">
             {pokemon.type.map((type, index) => (
               <TypePill key={index} type={type.type.name} />
             ))}

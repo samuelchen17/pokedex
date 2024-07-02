@@ -7,7 +7,7 @@ import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import PokeAboutText from "./modal-components/PokeAboutText";
-import TypePill from "../design/TypePill";
+import Susceptibility from "./modal-components/susceptibility/Susceptibility";
 
 function PokeModal({
   pokeId,
@@ -62,7 +62,7 @@ function PokeModal({
           className={`overflow-hidden bg-red-500 max-w-[600px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
           onClick={(event) => event.stopPropagation()}
         >
-          <div className="outline">
+          <div className="">
             <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
           </div>
           <div className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[80px]">
@@ -83,16 +83,7 @@ function PokeModal({
             <div onClick={playSound} className="outline">
               sound icon
             </div>
-            <div>
-              <div>Weaknesses</div>
-              <div>
-                {pokemonDetail.susceptibility.weakness.map((type) => (
-                  <TypePill type={type} />
-                ))}
-              </div>
-              <div>Resistances</div>
-              <div>Immunity to</div>
-            </div>
+            <Susceptibility susceptibility={pokemonDetail.susceptibility} />
           </div>
         </div>
       )}

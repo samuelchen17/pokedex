@@ -10,7 +10,7 @@ function PokeNameNumType({ pokemonDetail, paddedId }) {
           <div className="px-1 text-3xl text-slate-600">#{paddedId}</div>
         </div>
         <div className="flex justify-center py-2">
-          <div className="flex flex-row justify-center gap-8 w-[90%]">
+          <div className="flex flex-row justify-center md:gap-8 gap-4 w-[90%]">
             {pokemonDetail.type.map((type, index) => (
               <TypePill key={index} type={type.type.name} />
             ))}

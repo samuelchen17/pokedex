@@ -104,9 +104,6 @@ const getSusceptibility = async (typesUrl) => {
   const typeDamageRelations = await Promise.all(
     typesUrl.map(getTypeDamageRelation)
   );
-  // console.log(typeDamageRelations);
-  // combine the resistance and weaknesses and no damage from
-  // make weaknesses an array of objects, each object will have a type and multiplier
   const weaknesses = {};
   const resistances = {};
   const immunity = {};

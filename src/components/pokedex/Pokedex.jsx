@@ -38,7 +38,7 @@ function Pokedex({ region, setRegion }) {
   );
 
   return (
-    <div className="bg-red-300 min-h-[100vh]">
+    <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 px-2 my-2 flex justify-center items-center rounded-xl outline">

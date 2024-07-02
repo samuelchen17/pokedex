@@ -80,10 +80,10 @@ function PokeModal({
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />
+            <Susceptibility susceptibility={pokemonDetail.susceptibility} />
             <div onClick={playSound} className="outline">
               sound icon
             </div>
-            <Susceptibility susceptibility={pokemonDetail.susceptibility} />
           </div>
         </div>
       )}

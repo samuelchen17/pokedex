@@ -48,7 +48,7 @@ function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
             </div>
             <div className="relative w-[100px] h-[85px] overflow-hidden">
               <img
-                className="absolute top-[-70px] left-0 w-full h-[150px] object-cover"
+                className="absolute top-[-64px] left-0 w-full h-[150px] object-cover"
                 src={`https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen7x/regular/${pokemonDetail.name}.png`}
                 alt={`${pokemonDetail.name} sprite`}
                 style={{ imageRendering: "pixelated" }}

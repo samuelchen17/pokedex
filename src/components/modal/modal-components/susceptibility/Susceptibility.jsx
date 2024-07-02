@@ -7,13 +7,13 @@ function Susceptibility({ susceptibility }) {
     <div>
       <div className="outline bg-slate-200 my-2 pb-2 sms:mx-4 sms:rounded-xl px-2 py-2">
         <SuscepComponent susceptibilityType={susceptibility.weaknesses}>
-          Weaknesses
+          Weak to
         </SuscepComponent>
         <SuscepComponent susceptibilityType={susceptibility.resistances}>
-          Resistances
+          Resistant to
         </SuscepComponent>
         <SuscepComponent susceptibilityType={susceptibility.immunity}>
-          Immunity to
+          Immune to
         </SuscepComponent>
       </div>
     </div>

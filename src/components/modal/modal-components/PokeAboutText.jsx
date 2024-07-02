@@ -2,9 +2,9 @@ import React from "react";
 
 function PokeAboutText({ pokemonDetail }) {
   return (
-    <div className="mx-4 my-4 max-w-[500px] w-full outline text-wrap">
+    <div className="sms:mx-4 my-4 px-2 py-2 outline sms:rounded-xl bg-slate-200">
       <div>About</div>
-      <div className="text-wrap">{pokemonDetail.aboutText}</div>
+      <span className="text-wrap">{pokemonDetail.aboutText}</span>
     </div>
   );
 }

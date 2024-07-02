@@ -5,7 +5,7 @@ import SuscepComponent from "./SuscepComponent";
 function Susceptibility({ susceptibility }) {
   return (
     <div>
-      <div className="outline bg-slate-500 my-2 pb-2 sms:mx-4 sms:rounded-xl">
+      <div className="outline bg-slate-500 my-2 pb-2 sms:mx-4 sms:rounded-xl px-2 py-2">
         <SuscepComponent susceptibilityType={susceptibility.weaknesses}>
           Weaknesses
         </SuscepComponent>

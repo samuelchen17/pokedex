@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import Pearls from "../design/Pearls";
-
 import Region from "./Region";
 import Search from "./Search";
 
 function NavBar({ setRegion, searchParam, setSearchParam }) {
-  const [showFav, setShowFav] = useState(false);
   const [showRegion, setShowRegion] = useState(false);
 
   const handleOnClick = (event) => {
@@ -19,33 +17,52 @@ function NavBar({ setRegion, searchParam, setSearchParam }) {
       <div className="flex flex-ro justify-between">
         <Pearls />
         {/* <h1 className="text-4xl">Pokedex</h1> */}
-        <div className="flex justify-end flex-row md:w-[40%] w-full h-[30px] mt-2">
-          <button
+        <div className="flex justify-end md:w-[40%] w-full h-[30px] mt-14">
+          {/* <button
             className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 rounded-full mx-2 text-white outline-black"
             onClick={() => setShowFav(true)}
           >
             favourites
-          </button>
+          </button> */}
           <button
-            className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 rounded-full mx-2 text-white outline-black"
-            onClick={() => setShowRegion(true)}
+            className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 rounded-full mx-2 text-white outline-black"
+            onClick={() => setShowRegion(!showRegion)}
           >
-            region
+            <div className="sms:flex hidden">Region</div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6 sms:hidden"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+              />
+            </svg>
           </button>
         </div>
       </div>
 
-      <Search searchParam={searchParam} setSearchParam={setSearchParam} />
-
-      {showFav && <Favourites onClose={() => setShowFav(false)} />}
-      {showRegion && (
-        <Region
-          onClose={() => setShowRegion(false)}
-          setShowRegion={setShowRegion}
-          showRegion={showRegion}
-          handleOnClick={handleOnClick}
-        />
-      )}
+      {/* {showFav && <Favourites onClose={() => setShowFav(false)} />} */}
+      <div className="">
+        {showRegion && (
+          <Region
+            onClose={() => setShowRegion(false)}
+            setShowRegion={setShowRegion}
+            handleOnClick={handleOnClick}
+          />
+        )}
+        <Search searchParam={searchParam} setSearchParam={setSearchParam} />
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ function PokeSort({ sort, setSort }) {
   };
 
   return (
-    <div>
+    <div className="mx-2">
       <label className="text-white mr-2 text-xl font-medium">Sort By:</label>
       <select
         value={sort}

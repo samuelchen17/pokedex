@@ -37,7 +37,7 @@ function ModalEvo({ evoUrl, setSelectedPokemon, scrollToTop }) {
     return (
       <div className="flex flex-col justify-center items-center pb-3 bg-slate-200 w-full">
         <div
-          className="flex justify-center flex-col w-[200px] sms:w-[200px] md:w-[200px] cursor-pointer"
+          className="flex justify-center flex-col w-[170px] cursor-pointer rounded-full h-[170px] mt-4 bg-white hover:bg-slate-300"
           onClick={() => onClick(evoChain)}
         >
           <div className="relative h-[100px]">

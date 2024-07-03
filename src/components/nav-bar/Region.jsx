@@ -55,14 +55,14 @@ function Region({ showRegion, setShowRegion, handleOnClick }) {
   ];
 
   return (
-    <div className="flex absolute justify-end bg-opacity-50 top-[42px] right-[10px] z-50 outline">
+    <div className="flex justify-end my-4 mx-2">
       <div
-        className=" bg-white rounded-xl outline w-full"
+        className=" bg-white rounded-xl outline outline-red-700 py-2 px-2"
         onClick={() => {
           setShowRegion(false);
         }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="flex flex-wrap justify-center">
           {regions.map((region, index) => (
             <RegionBtn
               handleOnClick={handleOnClick}

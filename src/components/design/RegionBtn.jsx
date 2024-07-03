@@ -6,7 +6,11 @@ function RegionBtn({ handleOnClick, region }) {
       className={`${region.back} outline ${region.border} p-1 rounded-md w-[60px] text-wh my-2 mx-2`}
     >
       <div className={`${region.front} rounded-md text-center`}>
-        <button onClick={handleOnClick} value={region.value}>
+        <button
+          className="capitalize"
+          onClick={handleOnClick}
+          value={region.value}
+        >
           {region.name}
         </button>
       </div>

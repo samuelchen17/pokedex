@@ -11,7 +11,7 @@ function PokeImg({
     <div className="flex justify-center items-center bg-slate-200 sms:rounded-xl sms:mx-4 my-4 outline relative">
       <div className="absolute top-0 right-0 m-2 cursor-pointer">
         <div
-          className="flex justify-end px-2 py-2"
+          className="flex justify-end px-2 py-2 sms:text-3xl text-xl"
           onClick={handleAddFavourite}
         >
           {isFavourite ? "★" : "☆"}

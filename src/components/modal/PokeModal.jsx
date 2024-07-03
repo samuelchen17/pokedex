@@ -60,7 +60,7 @@ function PokeModal({
         <div className="text-white">Loading ...</div>
       ) : (
         <div
-          className={`overflow-hidden bg-red-500 max-w-[600px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
+          className={`overflow-hidden bg-red-500 max-w-[650px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
           onClick={(event) => event.stopPropagation()}
         >
           <div className="">
@@ -87,7 +87,10 @@ function PokeModal({
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />
             <Susceptibility susceptibility={pokemonDetail.susceptibility} />
-            <ModalEvo evoUrl={pokemonDetail.evo} />
+            <ModalEvo
+              evoUrl={pokemonDetail.evo}
+              setSelectedPokemon={setSelectedPokemon}
+            />
           </div>
         </div>
       )}

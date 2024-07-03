@@ -42,7 +42,7 @@ function ModalEvo({ evoUrl, setSelectedPokemon, scrollToTop }) {
         >
           <div className="relative h-[100px]">
             <img
-              className="absolute top-[-64px] left-0 w-full h-[150px] object-cover"
+              className="absolute w-full left-0 h-[100%] object-cover object-bottom outline outline-red-500"
               src={`https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen7x/regular/${evoChain.species.name}.png`}
               alt={`${evoChain.species.name} sprite`}
               style={{

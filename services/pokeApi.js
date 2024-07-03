@@ -1,14 +1,6 @@
-const MAX_POKEMON = 1302;
-const KANTO = [0, 151];
-const JOHTO = [151, 100];
-const HOENN = 252 - 386;
-const SINNOH = 387 - 493;
-const UNOVA = 494 - 649;
-const KALOS = 650 - 721;
+import axios from "axios";
 
-const test = [0, 20];
-
-const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${test[1]}&offset=${test[0]}`;
+// const POKE_BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${test[1]}&offset=${test[0]}`;
 const POKE_IMG_SM = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/001.png`;
 const POKE_IMG_LG = `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png`;
 const EVO = "https://pokeapi.co/api/v2/evolution-chain/2/";
@@ -18,12 +10,10 @@ const SPES = "https://pokeapi.co/api/v2/pokemon-species/5";
 const getPokemon = async (region) => {
   let pokemons = [];
   try {
-    const data = await fetch(
+    const res = await axios.get(
       `https://pokeapi.co/api/v2/pokemon?limit=${region[1]}&offset=${region[0]}`
-    ).then((res) => res.json());
-    // const res = await fetch(POKE_BASE_URL);
-    // const data = await res.json();
-    // console.log(data);
+    );
+    const data = res.data;
     const pokemonUrls = data.results.map((pokemon) => pokemon.url);
 
     pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));
@@ -38,10 +28,8 @@ const getPokemon = async (region) => {
 // should return objects or a list of objects
 const getPokemonInfo = async (url) => {
   try {
-    // console.log(url);
-    const data = await fetch(url).then((res) => res.json());
-    // const res = await fetch(url);
-    // const data = await res.json();
+    const res = await axios.get(url);
+    const data = res.data;
     return {
       name: data.name,
       id: data.id,
@@ -56,12 +44,12 @@ const getPokemonInfo = async (url) => {
 // grab the pokemon by id from front end
 const getPokemonDetail = async (id) => {
   try {
-    const pokeAbout = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${id}/`
-    ).then((res) => res.json());
-    const pokeSpecie = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
-    ).then((res) => res.json());
+    const [pokeAboutData, pokeSpecieData] = await axios.all([
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`),
+    ]);
+    const pokeAbout = pokeAboutData.data;
+    const pokeSpecie = pokeSpecieData.data;
 
     const genus = getEnGenus(pokeSpecie);
     const aboutText = getEnAboutText(pokeSpecie);
@@ -80,6 +68,7 @@ const getPokemonDetail = async (id) => {
       aboutText: aboutText,
       cry: pokeAbout.cries.latest,
       susceptibility: susceptibility,
+      evo: pokeSpecie.evolution_chain.url,
     };
 
     console.log(pokeDetails);
@@ -92,7 +81,8 @@ const getPokemonDetail = async (id) => {
 
 const getTypeDamageRelation = async (typeUrl) => {
   try {
-    const data = await fetch(typeUrl).then((res) => res.json());
+    const res = await axios.get(typeUrl);
+    const data = res.data;
     // console.log(data.damage_relations);
     return data.damage_relations;
   } catch (err) {
@@ -173,3 +163,12 @@ export { getPokemon, getPokemonDetail };
 // either write an algorithm to calc weaknesses or check api
 
 // if user input is a number or text
+
+// const MAX_POKEMON = 1302;
+// const KANTO = [0, 151];
+// const JOHTO = [151, 100];
+// const HOENN = 252 - 386;
+// const SINNOH = 387 - 493;
+// const UNOVA = 494 - 649;
+// const KALOS = 650 - 721;
+// const test = [0, 20];

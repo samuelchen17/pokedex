@@ -7,7 +7,7 @@ function SuscepComponent({ susceptibilityType, children }) {
       <div>{children}</div>
       <div className="grid grid-cols-3 gap-2">
         {Object.entries(susceptibilityType).map(([key, value]) => {
-          console.log(`${key}: ${value}`);
+          // console.log(`${key}: ${value}`);
           return (
             <div className="flex justify-center" key={key}>
               <TypePill type={key} />

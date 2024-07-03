@@ -8,6 +8,7 @@ import PokeImg from "./modal-components/PokeImg";
 import PokeModalNavBar from "./modal-components/PokeModalNavBar";
 import PokeAboutText from "./modal-components/PokeAboutText";
 import Susceptibility from "./modal-components/susceptibility/Susceptibility";
+import ModalEvo from "./modal-components/evolution/ModalEvo";
 
 function PokeModal({
   pokeId,
@@ -86,6 +87,7 @@ function PokeModal({
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />
             <Susceptibility susceptibility={pokemonDetail.susceptibility} />
+            <ModalEvo evoUrl={pokemonDetail.evo} />
           </div>
         </div>
       )}

@@ -3,7 +3,7 @@ import React from "react";
 function TypePill({ type }) {
   return (
     <span
-      className={`${type} rounded-md text-sm shadow-lg w-[100%] text-center capitalize`}
+      className={`${type} rounded-md text-sm shadow-md w-[100%] text-center capitalize outline outline-black outline-2`}
     >
       {type}
     </span>

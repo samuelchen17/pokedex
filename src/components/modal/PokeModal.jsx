@@ -40,7 +40,14 @@ function PokeModal({
   }, [pokeId]);
 
   const handleOnClick = (increment) => {
-    setSelectedPokemon(pokeId + increment);
+    if (pokeId + increment < 1) {
+      setSelectedPokemon(721);
+    } else if (pokeId + increment > 721) {
+      setSelectedPokemon(1);
+    } else {
+      setSelectedPokemon(pokeId + increment);
+    }
+
     // if less than region[0] or more than region[1]
     // if more than display 54 - x do nothing
     // or make it loop to the biggest and vice versa
@@ -67,32 +74,28 @@ function PokeModal({
         <div className="text-white">Loading ...</div>
       ) : (
         <div
-          className={`overflow-hidden bg-red-500 max-w-[650px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
+          className={`overflow-hidden bg-red-500 max-w-[700px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}
           onClick={(event) => event.stopPropagation()}
         >
           <div className="">
             <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
           </div>
           <div
-            className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[80px]"
+            className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[50px]"
             ref={contentRef}
           >
             <PokeNameNumType
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}
             />
-            <div className="flex justify-between">
-              <div
-                className="flex justify-end px-2 py-2"
-                onClick={handleAddFavourite}
-              >
-                {isFavourite ? "★" : "☆"}
-              </div>
-              <div onClick={playSound} className="outline">
-                sound icon
-              </div>
-            </div>
-            <PokeImg pokemonDetail={pokemonDetail} paddedId={paddedId} />
+
+            <PokeImg
+              pokemonDetail={pokemonDetail}
+              paddedId={paddedId}
+              playSound={playSound}
+              handleAddFavourite={handleAddFavourite}
+              isFavourite={isFavourite}
+            />
             <PokeAboutText pokemonDetail={pokemonDetail} />
             <PokeBio pokemonDetail={pokemonDetail} />
             <PokeStats stats={pokemonDetail.stats} />

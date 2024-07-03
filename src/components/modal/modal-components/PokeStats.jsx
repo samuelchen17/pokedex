@@ -12,18 +12,20 @@ const statNameShort = {
 function PokeStats({ stats }) {
   let statTotal = 0;
   return (
-    <div className="outline my-4 sms:mx-4 py-2 px-2 sms:rounded-xl bg-slate-200">
-      <span>stats</span>
+    <div className="outline my-4 sms:mx-4 sms:rounded-xl bg-slate-200">
+      <div className="bg-red-700 text-white sms:rounded-t-xl text-center mb-2 py-1">
+        stats
+      </div>
       {stats.map((stat, index) => {
         const statValue = (stat.base_stat / 255) * 100;
         statTotal += stat.base_stat;
         return (
           <div key={index} className="">
-            <div className="flex justify-between pb-1">
-              <span className="">{statNameShort[stat.stat.name]}</span>
-              <span className="">{stat.base_stat}</span>
+            <div className="flex justify-between py-1">
+              <div className="ml-4">{statNameShort[stat.stat.name]}</div>
+              <div className="mr-4">{stat.base_stat}</div>
             </div>
-            <div className="bg-gray-400 h-2.5 rounded-full">
+            <div className="bg-gray-400 h-2.5 rounded-full mx-4">
               <div
                 className="bg-blue-600 h-2.5 rounded-full"
                 style={{ width: `${statValue}%` }}
@@ -32,7 +34,9 @@ function PokeStats({ stats }) {
           </div>
         );
       })}
-      <div className="w-[15%]">Stat Total: {statTotal}</div>
+      <div className="w-full pl-4 py-2 mb-2 font-bold">
+        Stat Total: {statTotal}
+      </div>
     </div>
   );
 }

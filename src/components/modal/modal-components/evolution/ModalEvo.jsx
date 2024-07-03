@@ -5,11 +5,13 @@ import { GoArrowDown } from "react-icons/go";
 // recursive rendering of evolution
 //
 
-function ModalEvo({ evoUrl, setSelectedPokemon }) {
+function ModalEvo({ evoUrl, setSelectedPokemon, scrollToTop }) {
   const [evolutionChain, setEvolutionChain] = useState(null);
 
   const onClick = (evoChain) => {
-    setSelectedPokemon(evoChain.species.name);
+    const id = evoChain.species.url.split("/")[6];
+    setSelectedPokemon(id);
+    scrollToTop();
   };
 
   useEffect(() => {
@@ -38,12 +40,16 @@ function ModalEvo({ evoUrl, setSelectedPokemon }) {
           className="flex justify-center flex-col w-[100px] sms:w-[150px] md:w-[200px] outline outline-blue-500"
           onClick={() => onClick(evoChain)}
         >
-          <img
-            className=""
-            src={`https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen7x/regular/${evoChain.species.name}.png`}
-            alt={`${evoChain.species.name} sprite`}
-            style={{ imageRendering: "pixelated" }}
-          />
+          <div className="relative h-[100px]">
+            <img
+              className="absolute top-[-64px] left-0 w-full h-[150px] object-cover"
+              src={`https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen7x/regular/${evoChain.species.name}.png`}
+              alt={`${evoChain.species.name} sprite`}
+              style={{
+                imageRendering: "pixelated",
+              }}
+            />
+          </div>
           <div className="text-center">{evoChain.species.name}</div>
         </div>
         {evoChain.evolves_to.length > 0 && (

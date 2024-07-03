@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { getPokemonDetail } from "../../../services/pokeApi";
 import PokeStats from "./modal-components/PokeStats";
 
@@ -19,6 +19,7 @@ function PokeModal({
 }) {
   const [pokemonDetail, setPokemonDetail] = useState({});
   const [loading, setLoading] = useState(true);
+  const contentRef = useRef(null);
 
   const paddedId = pokeId.toString().padStart(3, "0");
   let statTotal = 0;
@@ -51,6 +52,12 @@ function PokeModal({
     audio.play();
   };
 
+  const scrollToTop = () => {
+    if (contentRef.current) {
+      contentRef.current.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="fixed bg-slate-900 bg-opacity-50 top-0 left-0 right-0 bottom-0 z-50 flex justify-center items-center"
@@ -66,7 +73,10 @@ function PokeModal({
           <div className="">
             <PokeModalNavBar handleOnClick={handleOnClick} onClose={onClose} />
           </div>
-          <div className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[80px]">
+          <div
+            className="bg-white rounded-xl overflow-y-auto overscroll-none outline relative h-[90%] pb-[80px]"
+            ref={contentRef}
+          >
             <PokeNameNumType
               pokemonDetail={pokemonDetail}
               paddedId={paddedId}
@@ -90,6 +100,7 @@ function PokeModal({
             <ModalEvo
               evoUrl={pokemonDetail.evo}
               setSelectedPokemon={setSelectedPokemon}
+              scrollToTop={scrollToTop}
             />
           </div>
         </div>

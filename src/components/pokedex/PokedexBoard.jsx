@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PokeCard from "../PokeCard";
-import { sortPokemons } from "../../functions/sort";
+import PokeCard from "../poke-card/PokeCard";
 import PokeFav from "./PokeFav";
 import PokeModal from "../modal/PokeModal";
+import { SyncLoader } from "react-spinners";
 
 function PokedexBoard({ loading, sortedPokemons }) {
   // grab initial local storage
@@ -39,8 +39,9 @@ function PokedexBoard({ loading, sortedPokemons }) {
         <div className="text-center text-3xl uppercase pb-2">Favourites</div>
         <div className="grid grid-cols-2 sms:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 justify-items-center overflow-hidden">
           {loading ? (
-            // add a spinning circle?
-            <div>Loading...</div>
+            <div className="flex flex-col h-[50px] w-full">
+              <SyncLoader color="#ff0000" />
+            </div>
           ) : favouritesList.length === 0 ? (
             <div className="text-center col-span-2 sms:col-span-3 md:col-span-5 lg:col-span-6">
               No favourites, please add to favourites by clicking the star

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getPokemonDetail } from "../../../services/pokeApi";
 import PokeStats from "./modal-components/PokeStats";
-
+import { PuffLoader } from "react-spinners";
 import PokeNameNumType from "./modal-components/PokeNameNumType";
 import PokeBio from "./modal-components/PokeBio";
 import PokeImg from "./modal-components/PokeImg";
@@ -71,7 +71,10 @@ function PokeModal({
       onClick={(event) => event.stopPropagation()}
     >
       {loading ? (
-        <div className="text-white">Loading ...</div>
+        <div>
+          <PuffLoader color="#ff0000" loading />
+          <div className="text-white">Loading ...</div>
+        </div>
       ) : (
         <div
           className={`overflow-hidden bg-red-500 max-w-[700px] sm:mx-6 sms:px-4 rounded-xl h-[100vh] xl:h-[95%] relative outline`}

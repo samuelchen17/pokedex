@@ -28,7 +28,7 @@ function NavBar({ setRegion, searchParam, setSearchParam }) {
             className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 rounded-full mx-2 text-white outline-black"
             onClick={() => setShowRegion(!showRegion)}
           >
-            <div className="sms:flex hidden">Region</div>
+            <div className="sms:flex hidden">Regions</div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

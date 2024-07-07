@@ -1,7 +1,7 @@
 import React from "react";
 import RegionBtn from "../design/RegionBtn";
 
-function Region({ showRegion, setShowRegion, handleOnClick }) {
+function Region({ setShowRegion, handleOnClick }) {
   const regions = [
     {
       name: "kanto",

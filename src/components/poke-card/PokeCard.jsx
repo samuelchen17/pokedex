@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import TypePill from "./design/TypePill";
+import TypePill from "../design/TypePill";
+import ImgRetry from "../ImgRetry";
 
 function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
   const paddedId = pokemon.id.toString().padStart(3, "0");
@@ -23,9 +23,9 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
               {isFavourite ? "★" : "☆"}
             </div>
           </div>
-          <div className="flex justify-center">
-            <img
-              className="w-full h-full object-cover"
+          <div className="flex justify-center sms:w-[200px] sms:h-[200px] w-[120px] h-[100px] ">
+            <ImgRetry
+              className=""
               src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
               alt={`${pokemon.name} png`}
             />

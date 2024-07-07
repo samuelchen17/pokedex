@@ -71,7 +71,7 @@ const getPokemonDetail = async (id) => {
       evo: pokeSpecie.evolution_chain.url,
     };
 
-    console.log(pokeDetails);
+    // console.log(pokeDetails);
 
     return pokeDetails;
   } catch (err) {

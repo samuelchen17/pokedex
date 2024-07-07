@@ -1,4 +1,5 @@
 import React from "react";
+import ImgRetry from "../../ImgRetry";
 
 function PokeImg({
   pokemonDetail,
@@ -17,11 +18,13 @@ function PokeImg({
           {isFavourite ? "★" : "☆"}
         </div>
       </div>
-      <img
-        className="max-w-[80%]"
-        src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${paddedId}.png`}
-        alt={`${pokemonDetail.name} png`}
-      />
+      <div className="max-w-[80%] sms:h-[500px] h-[350px] flex justify-center items-center">
+        <ImgRetry
+          className=""
+          src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${paddedId}.png`}
+          alt={`${pokemonDetail.name} png`}
+        />
+      </div>
       <div
         onClick={playSound}
         className="absolute bottom-0 right-0 m-2 cursor-pointer"

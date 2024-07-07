@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "./components/Footer";
 import Pokedex from "./components/pokedex/Pokedex";
 
 function App() {

@@ -39,7 +39,7 @@ function PokedexBoard({ loading, sortedPokemons }) {
         <div className="text-center text-3xl uppercase pb-2">Favourites</div>
         <div className="grid grid-cols-2 sms:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 justify-items-center overflow-hidden">
           {loading ? (
-            <div className="flex flex-col h-[50px] w-full">
+            <div className="flex flex-col h-[50px] w-full justify-center items-center">
               <SyncLoader color="#ff0000" />
             </div>
           ) : favouritesList.length === 0 ? (

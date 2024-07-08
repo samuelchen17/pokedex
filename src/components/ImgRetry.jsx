@@ -3,47 +3,60 @@ import { PuffLoader } from "react-spinners";
 
 const ImgRetry = ({ src, alt, className }) => {
   const [loading, setLoading] = useState(true);
-  const [imgError, setImgError] = useState(false);
-  const [retryCount, setRetryCount] = useState(0);
+  const [error, setError] = useState(false);
+  const [retries, setRetries] = useState(0);
+  const [currentSrc, setCurrentSrc] = useState(src);
+  const maxRetries = 3;
+  const retryInterval = 1000;
 
   useEffect(() => {
-    if (imgError && retryCount < 3) {
-      const retryTimer = setTimeout(() => {
-        setLoading(true);
-        setImgError(false);
-        setRetryCount(retryCount + 1);
-      }, 2000);
+    const img = new Image();
+    img.src = currentSrc;
 
-      return () => clearTimeout(retryTimer);
-    }
-  }, [imgError, retryCount]);
+    const handleLoad = () => {
+      setLoading(false);
+      setError(false);
+    };
 
-  const handleImageLoad = () => {
-    setLoading(false);
-    setImgError(false);
-  };
+    const handleError = () => {
+      if (retries < maxRetries) {
+        setTimeout(() => {
+          setRetries(retries + 1);
+          setCurrentSrc(`${src}?retry=${retries + 1}`);
+        }, retryInterval);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
 
-  const handleImageError = () => {
-    setLoading(false);
-    setImgError(true);
-  };
+    img.onload = handleLoad;
+    img.onerror = handleError;
+
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, [currentSrc, retries, maxRetries, retryInterval, src]);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <PuffLoader color="#ff0000" />
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="flex justify-center items-center">
+        Image failed to load
+      </div>
+    );
+  }
 
   return (
     <div className="w-full h-full flex justify-center items-center flex-col">
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        onLoad={handleImageLoad}
-        onError={handleImageError}
-      />
-      {loading ? (
-        <PuffLoader color="#ff0000" />
-      ) : imgError ? (
-        <span>Image not available</span>
-      ) : (
-        <div></div>
-      )}
+      <img src={src} alt={alt} className={className} />
     </div>
   );
 };

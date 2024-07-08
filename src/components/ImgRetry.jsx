@@ -6,7 +6,7 @@ const ImgRetry = ({ src, alt, className }) => {
   const [error, setError] = useState(false);
   const [retries, setRetries] = useState(0);
   const [currentSrc, setCurrentSrc] = useState(src);
-  const maxRetries = 3;
+  const maxRetries = 100;
   const retryInterval = 1000;
 
   useEffect(() => {

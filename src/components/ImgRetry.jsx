@@ -6,7 +6,7 @@ const ImgRetry = ({ src, alt, className }) => {
   const [error, setError] = useState(false);
   const [retries, setRetries] = useState(0);
   const [currentSrc, setCurrentSrc] = useState(src);
-  const maxRetries = 100;
+  const maxRetries = 3;
   const retryInterval = 1000;
 
   useEffect(() => {
@@ -48,7 +48,7 @@ const ImgRetry = ({ src, alt, className }) => {
   }
   if (error) {
     return (
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center text-center">
         Image failed to load
       </div>
     );

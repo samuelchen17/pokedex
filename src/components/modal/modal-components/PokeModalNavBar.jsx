@@ -12,7 +12,7 @@ function PokeModalNavBar({ handleOnClick, onClose }) {
         >
           [x]
         </div>
-        <div className="flex justify-end sms:w-[60%] w-full">
+        <div className="flex justify-end sms:w-[60%] w-full sms:mr-1 mr-2">
           <div className="flex flex-row justify-between h-full text-center w-[100%]">
             <div
               className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 rounded-xl"
@@ -35,7 +35,7 @@ function PokeModalNavBar({ handleOnClick, onClose }) {
               </svg>
             </div>
             <div
-              className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 sms:rounded-xl rounded-l-xl"
+              className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 rounded-xl"
               onClick={() => handleOnClick(1)}
             >
               <p className="text-white md:flex hidden">Next</p>

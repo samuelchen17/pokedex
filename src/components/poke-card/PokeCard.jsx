@@ -23,7 +23,7 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
               {isFavourite ? "★" : "☆"}
             </div>
           </div>
-          <div className="flex justify-center sms:w-[200px] sms:h-[200px] w-[120px] h-[100px] ">
+          <div className="flex justify-center sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]">
             <ImgRetry
               className=""
               src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}

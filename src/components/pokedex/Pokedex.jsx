@@ -45,7 +45,7 @@ function Pokedex({ region, setRegion }) {
     <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh relative">
       <div className="flex flex-row justify-center">
         {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
-        <div className="bg-red-500 py-2 sm:px-4 px-2 my-2 flex justify-center items-center rounded-xl outline">
+        <div className="bg-red-500 py-2 sm:px-4 px-2 sm:my-2 flex justify-center items-center rounded-xl outline ">
           <div className="flex justify-center items-center flex-col">
             <div className="flex justify-center items-center flex-col w-full">
               <NavBar

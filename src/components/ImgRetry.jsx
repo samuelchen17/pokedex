@@ -29,7 +29,7 @@ const ImgRetry = ({ src, alt, className }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center flex-col">
       <img
         src={src}
         alt={alt}

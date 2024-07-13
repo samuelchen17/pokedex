@@ -33,12 +33,7 @@ function Pokedex({ region, setRegion }) {
     fetchPokemon();
   }, [region]);
 
-  const sortedPokemons = sortPokemons(pokemons, sort);
-
-  console.log("sorted pokemon below");
-  console.log(sortedPokemons);
-
-  const filteredPokemons = sortedPokemons.filter(
+  const filteredPokemons = pokemons.filter(
     (pokemon) =>
       pokemon.name !== undefined &&
       pokemon.id !== undefined &&
@@ -46,6 +41,8 @@ function Pokedex({ region, setRegion }) {
       (pokemon.name.toLowerCase().includes(searchParam.toLowerCase()) ||
         pokemon.id.toString().includes(searchParam))
   );
+
+  const sortedPokemons = sortPokemons(filteredPokemons, sort);
 
   return (
     <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh relative">
@@ -76,7 +73,7 @@ function Pokedex({ region, setRegion }) {
               Toggle Sort
             </button> */}
 
-            <PokedexBoard loading={loading} sortedPokemons={filteredPokemons} />
+            <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
           </div>
         </div>
         {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}

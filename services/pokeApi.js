@@ -16,10 +16,8 @@ const getPokemon = async (region) => {
     const data = res.data;
     const pokemonUrls = data.results.map((pokemon) => pokemon.url);
 
-    console.log(data);
-
     pokemons = await Promise.all(pokemonUrls.map(getPokemonInfo));
-    // console.log(pokemons[4].name);
+    console.log(pokemons);
     return pokemons;
   } catch (err) {
     console.log("error getting pokemon list", err);

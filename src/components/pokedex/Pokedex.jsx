@@ -38,14 +38,14 @@ function Pokedex({ region, setRegion }) {
   console.log("sorted pokemon below");
   console.log(sortedPokemons);
 
-  const filteredPokemons = sortedPokemons.filter((pokemon) => {
-    try {
-      pokemon.name.toLowerCase().includes(searchParam.toLowerCase()) ||
-        pokemon.id.toString().includes(searchParam);
-    } catch {
-      console.log(pokemon);
-    }
-  });
+  const filteredPokemons = sortedPokemons.filter(
+    (pokemon) =>
+      pokemon.name !== undefined &&
+      pokemon.id !== undefined &&
+      pokemon.type !== undefined &&
+      (pokemon.name.toLowerCase().includes(searchParam.toLowerCase()) ||
+        pokemon.id.toString().includes(searchParam))
+  );
 
   return (
     <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh relative">

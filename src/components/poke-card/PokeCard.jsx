@@ -23,16 +23,12 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
               {isFavourite ? "★" : "☆"}
             </div>
           </div>
-          <div className="flex justify-center sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]">
+          <div className="flex justify-center sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px] py-2">
             <ImgRetry
-              className="sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]"
+              className="sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px] flex"
               src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
               alt={`${pokemon.name} png`}
             />
-            {/* <img
-              src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
-              alt="Pokemon 001"
-            /> */}
           </div>
         </div>
         <div>

@@ -18,9 +18,9 @@ function PokeImg({
           {isFavourite ? "★" : "☆"}
         </div>
       </div>
-      <div className="max-w-[80%] sms:h-[500px] h-[350px] flex justify-center items-center">
+      <div className="max-w-[80%] sms:h-[500px] h-[350px] flex justify-center items-center my-4">
         <ImgRetry
-          className=""
+          className="flex px-2"
           src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
           alt={`${pokemonDetail.name} png`}
         />

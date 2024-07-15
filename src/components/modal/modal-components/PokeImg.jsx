@@ -21,7 +21,7 @@ function PokeImg({
       <div className="max-w-[80%] sms:h-[500px] h-[350px] flex justify-center items-center">
         <ImgRetry
           className=""
-          src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${paddedId}.png`}
+          src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
           alt={`${pokemonDetail.name} png`}
         />
       </div>

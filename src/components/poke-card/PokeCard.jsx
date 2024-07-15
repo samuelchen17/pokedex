@@ -25,7 +25,7 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
           </div>
           <div className="flex justify-center sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]">
             <ImgRetry
-              className=""
+              className="sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]"
               src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
               alt={`${pokemon.name} png`}
             />

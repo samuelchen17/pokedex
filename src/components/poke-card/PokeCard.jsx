@@ -26,9 +26,13 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
           <div className="flex justify-center sms:min-w-[180px] sms:h-[200px] min-w-[120px] min-h-[100px]">
             <ImgRetry
               className=""
-              src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
+              src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
               alt={`${pokemon.name} png`}
             />
+            {/* <img
+              src={`https://raw.githubusercontent.com/HybridShivam/Pokemon/master/assets/images/${paddedId}.png`}
+              alt="Pokemon 001"
+            /> */}
           </div>
         </div>
         <div>
@@ -43,5 +47,6 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
     </div>
   );
 }
+// src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
 
 export default PokeCard;

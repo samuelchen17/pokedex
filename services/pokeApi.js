@@ -160,11 +160,6 @@ export { getPokemon, getPokemonDetail };
 // big image
 // https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png
 
-// either write an algorithm to calc weaknesses or check api
-
-// if user input is a number or text
-
-// const MAX_POKEMON = 1302;
 // const KANTO = [0, 151];
 // const JOHTO = [151, 100];
 // const HOENN = 252 - 386;

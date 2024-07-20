@@ -47,10 +47,6 @@ function PokeModal({
     } else {
       setSelectedPokemon(pokeId + increment);
     }
-
-    // if less than region[0] or more than region[1]
-    // if more than display 54 - x do nothing
-    // or make it loop to the biggest and vice versa
   };
 
   const playSound = (event) => {
@@ -116,21 +112,3 @@ function PokeModal({
 }
 
 export default PokeModal;
-
-// fix the enxt and prev, need to implement region search and search range
-// add stat total
-// add the sound when clicked
-// add abilities and weaknesses?
-// stat name conditional render?
-
-// add stat abbre for smaller screens
-// at the number at the end, make the gaps even
-
-// add icons to height and weight
-
-// add box shadows and hover effects
-
-// background colour is a transition of both types
-
-// add stat total
-// make prev and next arrows or add arrows

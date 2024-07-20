@@ -30,7 +30,6 @@ function ModalEvo({ evoUrl, setSelectedPokemon, scrollToTop }) {
   }, [evoUrl]);
 
   // recursively render the evolution chain?
-  //
   const renderEvolutions = (evoChain) => {
     if (!evoChain) return null;
 

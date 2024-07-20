@@ -16,14 +16,7 @@ function NavBar({ setRegion, searchParam, setSearchParam }) {
     <div className="flex flex-col bg-red-500 w-full relative">
       <div className="flex flex-ro justify-between">
         <Pearls />
-        {/* <h1 className="text-4xl">Pokedex</h1> */}
         <div className="flex justify-end md:w-[40%] w-full h-[30px] mt-14">
-          {/* <button
-            className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 rounded-full mx-2 text-white outline-black"
-            onClick={() => setShowFav(true)}
-          >
-            favourites
-          </button> */}
           <button
             className="flex outline items-center justify-center cursor-pointer shadow-lg w-[45%] bg-slate-500 hover:bg-slate-600 rounded-full mx-2 text-white outline-black"
             onClick={() => setShowRegion(!showRegion)}
@@ -51,8 +44,6 @@ function NavBar({ setRegion, searchParam, setSearchParam }) {
           </button>
         </div>
       </div>
-
-      {/* {showFav && <Favourites onClose={() => setShowFav(false)} />} */}
       <div className="">
         {showRegion && (
           <Region

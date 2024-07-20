@@ -11,9 +11,6 @@ function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
     handleAddFavourite(id);
   };
 
-  // add use effect to get name of pokemon
-  // write a new api to get only name of pokemon
-
   useEffect(() => {
     const fetchPokeDetail = async () => {
       try {
@@ -35,7 +32,6 @@ function PokeFav({ id, handleAddFavourite, isFavourite, onClick }) {
       onClick={onClick}
     >
       {loading ? (
-        // add a spinning circle?
         <div>Loading...</div>
       ) : (
         <>

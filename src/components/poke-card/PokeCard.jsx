@@ -43,6 +43,5 @@ function PokeCard({ pokemon, handleAddFavourite, isFavourite, onClick }) {
     </div>
   );
 }
-// src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/${paddedId}.png`}
 
 export default PokeCard;

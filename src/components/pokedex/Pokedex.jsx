@@ -47,7 +47,6 @@ function Pokedex({ region, setRegion }) {
   return (
     <div className="bg-gradient-to-br from-blue-100 from-5% to-blue-400 to-90% min-h-dvh relative">
       <div className="flex flex-row justify-center">
-        {/* <div className="hidden lg:flex bg-red-500">Region</div> */}
         <div className="bg-red-500 py-2 sm:px-4 px-2 sm:my-2 flex justify-center items-center rounded-xl outline ">
           <div className="flex justify-center items-center flex-col">
             <div className="flex justify-center items-center flex-col w-full">
@@ -64,19 +63,9 @@ function Pokedex({ region, setRegion }) {
               />
             </div>
 
-            {/* <button
-              onClick={() => {
-                setSearchSortVis(!searchSortVis);
-              }}
-              className="bg-blue-500 text-white px-4 py-2 mb-4"
-            >
-              Toggle Sort
-            </button> */}
-
             <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />
           </div>
         </div>
-        {/* <div className="hidden lg:flex bg-red-500">Favourites</div> */}
       </div>
       <button
         className="fixed bottom-4 right-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-full shadow-md"
@@ -102,14 +91,3 @@ function Pokedex({ region, setRegion }) {
 }
 
 export default Pokedex;
-
-// allow favourites, use their sprite for the favourites
-// sort by favourites only
-
-// filters
-// filter by type
-// filter by region
-// add display of showing 151-252
-// search by number range
-// search by name and number
-// show all 1 - 721

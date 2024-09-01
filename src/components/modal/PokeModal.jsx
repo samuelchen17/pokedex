@@ -55,6 +55,7 @@ function PokeModal({
     audio.play();
   };
 
+  // for when evolution is clicked
   const scrollToTop = () => {
     if (contentRef.current) {
       contentRef.current.scrollTo({ top: 0, behavior: "smooth" });

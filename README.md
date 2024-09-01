@@ -43,13 +43,19 @@ The files in this folder are all for the popup when a pokemon is clicked to disp
 
 ### /src/components/nav-bar
 
-This folder housed all the components for the main pokedex nav bar, This includes the search bar, sort by option, the button to select what region's pokemon to display and the national pokedex entry range.
+This folder housed all the components for the main pokedex nav bar, This includes the search bar and the button to select what region's pokemon to display.
 
-- NavBar.jsx: This is the main
+- NavBar.jsx: This file houses the design elements of the pokedex, uses some of the files from the design folder and contains the button to allow a user to change the region and search for a pokemon.
+- Region.jsx: This file houses the information for each region such as the name of the region, the range of pokemon and design colour of each region. It is built with scalability in mind. It displays the buttons that allow for different region selection.
+- Search.jsx: This just displays the search bar, the functionality of the search bar is in another file, the search parameters are stored in a useState which is passed down from a parent component.
 
 ### /src/components/poke-card/PokeCard.jsx
 
-This file
+This file is a reuseable component that displays basic pokemon information such as the favourite status, national pokedex entry, image, name, and types. The design choice here was to mimic the pokemon trading card game as well as the in game display of pokemons. There is also a bounce effect when hovering to provide user's more visual feedback and interactivity.
+
+### /src/components/pokedex
+
+This folder contains all the files for the main pokedex
 
 ### /src/components/ImgRetry.jsx
 

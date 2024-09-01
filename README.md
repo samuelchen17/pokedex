@@ -57,6 +57,14 @@ This file is a reuseable component that displays basic pokemon information such 
 
 This folder contains all the files for the main pokedex
 
+- Pokedex.jsx: This file houses all the components for the pokedex, it is essentially the homepage. There is a button that scrolls to the top to help improve user navigation experience. It also contains the code to search for pokemon by name or ID and updates the UI immediately by filtering pokemon that match the search. Also contains the sort logic. Also uses useEffect to update the pokemon data based on the data fetched by the API. It is also the parent file that houses most of the useStates that is passed down into the child components.
+- PokedexBoard.jsx: This component houses board that displays the user's favourites and also all the pokemon cards. This is essentially the "main" of the app. It contains the logic to store favourted pokemon into local storage and the logic to open the pokemodal. There is also a loading icon while the pokemons load to provide a better user experience. It also contains code to update the favourites bar live when a user interacts with the favourites feature. It uses .map to render all the favourites and pokemon cards.
+- PokedexSort.jsx: This file houses the pokesort component and also displays the range of currently displayed pokemon.
+- PokeFav.jsx: This file is reused to display the favourites card and also can be clicked to open the pokemodal. Provides basic information such as the pokemon name, number and sprite. Has a hover bounce effect for better UX.
+- PokeSort.jsx: This file displays the sort button. Can sort numerically or alphabetically.
+
 ### /src/components/ImgRetry.jsx
+
+This file is contains logic that is used to wrap every image that is rendered. It displays a loading screen while the image is loading and contains the logic to reload the image a set number of times in case images fail to load initially. This was implemented to ensure that images would successfully render even with bad internet.
 
 ### /src/components/functions/sort.js

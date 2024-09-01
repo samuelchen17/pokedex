@@ -11,7 +11,6 @@ function Pokedex({ region, setRegion }) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState("lowNumFirst");
-  const [searchSortVis, setSearchSortVis] = useState("true");
   const [searchParam, setSearchParam] = useState("");
 
   const toTop = () => {
@@ -55,12 +54,7 @@ function Pokedex({ region, setRegion }) {
                 searchParam={searchParam}
                 setSearchParam={setSearchParam}
               />
-              <PokedexSort
-                sort={sort}
-                setSort={setSort}
-                searchSortVis={searchSortVis}
-                region={region}
-              />
+              <PokedexSort sort={sort} setSort={setSort} region={region} />
             </div>
 
             <PokedexBoard loading={loading} sortedPokemons={sortedPokemons} />

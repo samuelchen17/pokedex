@@ -67,6 +67,6 @@ This folder contains all the files for the main pokedex
 
 This file is contains logic that is used to wrap every image that is rendered. It displays a loading screen while the image is loading and contains the logic to reload the image a set number of times in case images fail to load initially. This was implemented to ensure that images would successfully render even with bad internet.
 
-### /src/components/functions/sort.js
+### /src/functions/sort.js
 
 This file contains the sort sort logic to sort pokemons either numerically by their national pokedex number of alphabetically.
